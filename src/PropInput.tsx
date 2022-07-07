@@ -1,53 +1,24 @@
-import { useState } from 'react';
-import {
-  RadioGroup,
-  Stack,
-  Radio,
-  Input,
-  FormControl,
-  FormLabel,
-  Box,
-} from '@chakra-ui/react';
-import { useStyleUtils } from './Provider';
+import { FormControl, FormLabel, Box } from '@chakra-ui/react';
+import { PROPTYPES } from './constants';
+import SliderInput from './components/slider-input';
+import ColorInput from './components/color-input';
+import SelectInput from './components/select-input';
 
 const PropInput = (props: any) => {
   const { prop, path } = props;
-  const { setPropByPath } = useStyleUtils();
-  const [value, setValue] = useState(prop.defaultValue);
+  let input: React.ReactNode = null;
 
-  const options: any = Object.entries(prop.options);
-  const hasOptions = options.length > 0;
-  const validColor = /^#[a-f0-9]{3,6}$/i;
-
-  const handleChange = (e: any) => {
-    if (typeof e === 'string') {
-      setValue(e);
-      return setPropByPath(path, prop.options[e]);
-    }
-
-    const userInput = e.target.value;
-    setValue(userInput);
-    if (!validColor.test(userInput)) return;
-    setPropByPath(path, userInput);
-  };
-
-  const input = hasOptions ? (
-    <RadioGroup value={value} onChange={handleChange}>
-      <Stack spacing={5} direction="row">
-        {options.map(([label, _]: any) => (
-          <Radio
-            key={`prop-radio-${path}-${label}`}
-            colorScheme="yellow"
-            value={label}
-          >
-            {label}
-          </Radio>
-        ))}
-      </Stack>
-    </RadioGroup>
-  ) : (
-    <Input value={value} onChange={handleChange} />
-  );
+  switch (prop.input) {
+    case PROPTYPES.COLOR:
+      input = <ColorInput prop={prop} path={path} />;
+      break;
+    case PROPTYPES.SELECT:
+      input = <SelectInput prop={prop} path={path} />;
+      break;
+    case PROPTYPES.SLIDER:
+      input = <SliderInput prop={prop} path={path} />;
+      break;
+  }
 
   return (
     <Box mb={4}>
