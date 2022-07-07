@@ -1,4 +1,4 @@
-import { Container, Flex, Grid, GridItem, Heading } from '@chakra-ui/react';
+import { Container, Grid, GridItem, Heading } from '@chakra-ui/react';
 import Editor from './Editor';
 import Preview from './Preview';
 

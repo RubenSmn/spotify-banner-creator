@@ -1,18 +1,18 @@
 import {
+  Stack,
   Input,
-  Box,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
+  Tabs,
+  TabList,
+  TabPanels,
+  TabPanel,
+  Tab,
 } from '@chakra-ui/react';
 import { configProps } from './constants';
 import PropInput from './PropInput';
 import { useBannerName } from './Provider';
 
 const Editor = () => {
-  const options = Object.entries(configProps);
+  const categories = Object.entries(configProps);
   const [bannerName, setBannerName] = useBannerName();
 
   const handleChange = (e: any) => {
@@ -21,22 +21,24 @@ const Editor = () => {
   };
 
   return (
-    <Box minWidth="330px" overflowY='scroll' height='calc(100vh - 7rem)'>
+    <Stack minWidth="350px" spacing={2}>
       <Input value={bannerName} onChange={handleChange} />
-      <Accordion defaultIndex={[0]} allowMultiple>
-        {options.map(([categoryName, values]) => {
-          const { displayText, props } = values;
-          return (
-            <AccordionItem key={`aic-${categoryName}`}>
-              <h2>
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    {displayText}
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
+      <Tabs>
+        <TabList>
+          {categories.map(([categoryName, values]) => {
+            const { displayText } = values;
+            return <Tab key={`tlt-${categoryName}`}>{displayText}</Tab>;
+          })}
+        </TabList>
+        <TabPanels>
+          {categories.map(([categoryName, values]) => {
+            const { props } = values;
+            return (
+              <TabPanel
+                key={`tpc-${categoryName}`}
+                overflowY="scroll"
+                height="79vh"
+              >
                 {Object.entries(props).map(([propName, prop]) => (
                   <PropInput
                     key={`pii-${propName}`}
@@ -44,12 +46,12 @@ const Editor = () => {
                     prop={prop}
                   />
                 ))}
-              </AccordionPanel>
-            </AccordionItem>
-          );
-        })}
-      </Accordion>
-    </Box>
+              </TabPanel>
+            );
+          })}
+        </TabPanels>
+      </Tabs>
+    </Stack>
   );
 };
 
