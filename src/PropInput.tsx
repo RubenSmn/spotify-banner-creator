@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { PROPTYPES } from './interfaces';
 import SliderInput from './components/slider-input';
 import ColorInput from './components/color-input';
@@ -20,14 +20,7 @@ const PropInput = (props: any) => {
       break;
   }
 
-  return (
-    <Box mb={4}>
-      <FormControl>
-        <FormLabel>{prop.displayText}</FormLabel>
-        {input}
-      </FormControl>
-    </Box>
-  );
+  return <Box mb={4}>{input}</Box>;
 };
 
 export default PropInput;

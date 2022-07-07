@@ -1,4 +1,6 @@
 import React from 'react';
+import { Text, IconButton } from '@chakra-ui/react';
+import { RepeatIcon } from '@chakra-ui/icons';
 import { RadioGroup, Radio, Stack } from '@chakra-ui/react';
 import { StylePropSelect } from '../interfaces';
 import { useStyleUtils } from '../Provider';
@@ -17,20 +19,37 @@ const SelectInput: React.FC<Props> = (props) => {
     setPropByPath(path, value);
   };
 
+  const handleReset = () => {
+    const value = prop.options[prop.defaultValue];
+    setPropByPath(path, value);
+  };
+
   return (
-    <RadioGroup value={getPropByPath(path)} onChange={handleChange}>
-      <Stack spacing={5} direction="row" textTransform="capitalize">
-        {Object.entries(prop.options).map(([label, _]: any) => (
-          <Radio
-            key={`prop-radio-${path}-${label}`}
-            colorScheme="yellow"
-            value={label}
-          >
-            {label}
-          </Radio>
-        ))}
+    <>
+      <Stack direction="row" justify="space-between" alignItems="center">
+        <Text>{prop.displayText}</Text>
+        <IconButton
+          aria-label="reset value"
+          icon={<RepeatIcon />}
+          size="sm"
+          variant="ghost"
+          onClick={handleReset}
+        />
       </Stack>
-    </RadioGroup>
+      <RadioGroup value={getPropByPath(path)} onChange={handleChange}>
+        <Stack spacing={5} direction="row" textTransform="capitalize">
+          {Object.entries(prop.options).map(([label, _]: any) => (
+            <Radio
+              key={`prop-radio-${path}-${label}`}
+              colorScheme="yellow"
+              value={label}
+            >
+              {label}
+            </Radio>
+          ))}
+        </Stack>
+      </RadioGroup>
+    </>
   );
 };
 

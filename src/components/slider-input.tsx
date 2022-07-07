@@ -6,7 +6,11 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Flex,
+  Text,
+  Stack,
+  IconButton,
 } from '@chakra-ui/react';
+import { RepeatIcon } from '@chakra-ui/icons';
 import { StylePropSlider } from '../interfaces';
 import { useStyleUtils } from '../Provider';
 
@@ -30,30 +34,47 @@ const SliderInput: React.FC<Props> = (props) => {
     setPropByPath(path, value);
   };
 
+  const handleReset = () => {
+    const value = prop.defaultValue + prop.unit;
+    setPropByPath(path, value);
+  };
+
   return (
-    <Slider
-      defaultValue={Number(prop.defaultValue)}
-      min={prop.min}
-      max={prop.max}
-      step={prop.step}
-      onChange={handleChange}
-    >
-      <SliderTrack bg="red.100">
-        <Box position="relative" right={10} />
-        <SliderFilledTrack bg="tomato" />
-      </SliderTrack>
-      <SliderThumb boxSize={3} />
-      <Flex justify="space-between" width="inherit">
-        {prop.helpers.map((helper) => {
-          const [key, _] = Object.entries(helper)[0];
-          return (
-            <Box key={`slm-${prop}-${key}`} sx={{ ...labelStyles }}>
-              {key}
-            </Box>
-          );
-        })}
-      </Flex>
-    </Slider>
+    <>
+      <Stack direction="row" justify="space-between" alignItems="center">
+        <Text>{prop.displayText}</Text>
+        <IconButton
+          aria-label="reset value"
+          icon={<RepeatIcon />}
+          size="sm"
+          variant="ghost"
+          onClick={handleReset}
+        />
+      </Stack>
+      <Slider
+        defaultValue={Number(prop.defaultValue)}
+        min={prop.min}
+        max={prop.max}
+        step={prop.step}
+        onChange={handleChange}
+      >
+        <SliderTrack bg="red.100">
+          <Box position="relative" right={10} />
+          <SliderFilledTrack bg="tomato" />
+        </SliderTrack>
+        <SliderThumb boxSize={3} />
+        <Flex justify="space-between" width="inherit">
+          {prop.helpers.map((helper) => {
+            const [key, _] = Object.entries(helper)[0];
+            return (
+              <Box key={`slm-${prop}-${key}`} sx={{ ...labelStyles }}>
+                {key}
+              </Box>
+            );
+          })}
+        </Flex>
+      </Slider>
+    </>
   );
 };
 
