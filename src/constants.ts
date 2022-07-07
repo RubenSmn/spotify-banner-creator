@@ -1,6 +1,7 @@
 import {
+  PROPTYPES,
   BannerStyle,
-  StyleProp,
+  StylePropColor,
   StylePropSelect,
   StylePropSlider,
 } from './interfaces';
@@ -9,15 +10,10 @@ interface ConfigProps {
   [category: string]: {
     displayText: string;
     props: {
-      [prop: string]: StyleProp | StylePropSelect | StylePropSlider;
+      // [prop: string]: StylePropColor | StylePropSelect | StylePropSlider;
+      [prop: string]: any;
     };
   };
-}
-
-export enum PROPTYPES {
-  COLOR = 'color',
-  SELECT = 'select',
-  SLIDER = 'slider',
 }
 
 export const configProps: ConfigProps = {

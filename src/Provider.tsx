@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { configProps, PROPTYPES } from './constants';
+import { configProps } from './constants';
+import { PROPTYPES } from './interfaces';
 
 interface Props {
   children: React.ReactNode;

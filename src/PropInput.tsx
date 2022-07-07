@@ -1,5 +1,5 @@
 import { FormControl, FormLabel, Box } from '@chakra-ui/react';
-import { PROPTYPES } from './constants';
+import { PROPTYPES } from './interfaces';
 import SliderInput from './components/slider-input';
 import ColorInput from './components/color-input';
 import SelectInput from './components/select-input';
