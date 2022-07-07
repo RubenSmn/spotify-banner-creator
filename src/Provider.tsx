@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
-import { defaultBannerStyle } from './constants';
+import { configProps, PROPTYPES } from './constants';
 
 interface Props {
   children: React.ReactNode;
 }
 
+const getDefaultValues = () => {
+  const style: any = {};
+  Object.keys(configProps).map((category: string) => {
+    const props = Object.entries(configProps[category].props);
+    style[category] = props.reduce((acc: any, val) => {
+      const [prop, values] = val;
+      switch (values.input) {
+        case PROPTYPES.SELECT:
+          return { ...acc, [prop]: values.options[values.defaultValue] };
+        case PROPTYPES.SLIDER:
+          return { ...acc, [prop]: values.defaultValue + values.unit };
+        default:
+          return { ...acc, [prop]: values.defaultValue };
+      }
+    }, {});
+  });
+  return style;
+};
+
 const BannerContext = React.createContext<any>({});
 
 const BannerProvider: React.FC<Props> = ({ children }) => {
-  const [bannerStyle, setBannerStyle] = useState(defaultBannerStyle);
+  const [bannerStyle, setBannerStyle] = useState(getDefaultValues());
   const [bannerName, setBannerName] = useState('Funky Finesse');
 
   /**
