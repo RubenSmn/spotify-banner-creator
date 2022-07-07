@@ -27,7 +27,8 @@ const labelStyles = {
 
 const SliderInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
-  const { setPropByPath } = useStyleUtils();
+  const { getPropByPath, setPropByPath } = useStyleUtils();
+  const sliderValue = getPropByPath(path).match(/-?\d+(?:\.\d+)?/)[0];
 
   const handleChange = (userInput: number) => {
     const value = userInput + prop.unit;
@@ -52,7 +53,7 @@ const SliderInput: React.FC<Props> = (props) => {
         />
       </Stack>
       <Slider
-        defaultValue={Number(prop.defaultValue)}
+        value={sliderValue}
         min={prop.min}
         max={prop.max}
         step={prop.step}
