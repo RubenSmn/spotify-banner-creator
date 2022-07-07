@@ -1,6 +1,19 @@
 import { BannerStyle } from './interfaces';
 
-export const configProps = {
+interface ConfigProps {
+  [category: string]: {
+    displayText: string;
+    props: {
+      [prop: string]: {
+        displayText: string;
+        options: { [key: string]: string };
+        defaultValue: string;
+      };
+    };
+  };
+}
+
+export const configProps: ConfigProps = {
   typography: {
     displayText: 'Text Style',
     props: {
@@ -11,12 +24,20 @@ export const configProps = {
           normal: '4rem',
           large: '5rem',
         },
-        defaultValue: '4rem',
+        defaultValue: 'normal',
       },
       color: {
         displayText: 'Text Color',
-        options: [],
+        options: {},
         defaultValue: '#666',
+      },
+      fontWeight: {
+        displayText: 'Font Weight',
+        options: {
+          normal: '400',
+          bold: '700',
+        },
+        defaultValue: 'bold',
       },
     },
   },
@@ -25,7 +46,7 @@ export const configProps = {
     props: {
       backgroundColor: {
         displayText: 'Background Color',
-        options: [],
+        options: {},
         defaultValue: '#ff7',
       },
       justifyContent: {
@@ -52,12 +73,25 @@ export const configProps = {
 
 export const defaultBannerStyle: BannerStyle = {
   typography: {
-    lineHeight: configProps.typography.props.lineHeight.defaultValue,
+    lineHeight:
+      configProps.typography.props.lineHeight.options[
+        configProps.typography.props.lineHeight.defaultValue
+      ],
     color: configProps.typography.props.color.defaultValue,
+    fontWeight:
+      configProps.typography.props.fontWeight.options[
+        configProps.typography.props.fontWeight.defaultValue
+      ],
   },
   banner: {
     backgroundColor: configProps.banner.props.backgroundColor.defaultValue,
-    justifyContent: configProps.banner.props.justifyContent.defaultValue,
-    alignItems: configProps.banner.props.alignItems.defaultValue,
+    justifyContent:
+      configProps.banner.props.justifyContent.options[
+        configProps.banner.props.justifyContent.defaultValue
+      ],
+    alignItems:
+      configProps.banner.props.alignItems.options[
+        configProps.banner.props.alignItems.defaultValue
+      ],
   },
 };

@@ -1,8 +1,9 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import { defaultBannerStyle } from './constants';
+import { useBannerName, useBannerStyle } from './Provider';
 
 const Preview = () => {
-  const style = defaultBannerStyle;
+  const [style, _] = useBannerStyle();
+  const [bannerName] = useBannerName();
 
   return (
     <Flex justifyContent="center">
@@ -13,9 +14,9 @@ const Preview = () => {
         display="flex"
         sx={style.banner}
       >
-        <Box maxWidth="200px">
-          <Text fontWeight="bold" fontSize="4rem" sx={style.typography}>
-            Blue Blues
+        <Box maxWidth="min-content">
+          <Text fontSize="4rem" fontFamily="Roboto" sx={style.typography}>
+            {bannerName}
           </Text>
         </Box>
       </Box>
