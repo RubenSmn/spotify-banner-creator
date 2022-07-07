@@ -13,6 +13,8 @@ interface Props {
 const ColorInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
   const { getPropByPath, setPropByPath } = useStyleUtils();
+  const inputValue = getPropByPath(path);
+  const isChanged = String(inputValue) !== String(prop.defaultValue);
 
   const isTypography = /typography/i.test(path);
 
@@ -29,16 +31,18 @@ const ColorInput: React.FC<Props> = (props) => {
     <>
       <Stack direction="row" justify="space-between" alignItems="center">
         <Text>{prop.displayText}</Text>
-        <IconButton
-          aria-label="reset value"
-          icon={<RepeatIcon />}
-          size="sm"
-          variant="ghost"
-          onClick={handleReset}
-        />
+        {isChanged && (
+          <IconButton
+            aria-label="reset value"
+            icon={<RepeatIcon />}
+            size="sm"
+            variant="ghost"
+            onClick={handleReset}
+          />
+        )}
       </Stack>
       <ColorPicker
-        value={getPropByPath(path)}
+        value={inputValue}
         onChange={handleChange}
         hideControls={isTypography}
         hideInputs

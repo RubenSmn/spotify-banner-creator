@@ -13,6 +13,8 @@ interface Props {
 const SelectInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
   const { setPropByPath, getPropByPath } = useStyleUtils();
+  const inputValue = getPropByPath(path);
+  const isChanged = String(inputValue) !== String(prop.defaultValue);
 
   const handleChange = (userInput: string) => {
     const value = prop.options[userInput];
@@ -28,15 +30,17 @@ const SelectInput: React.FC<Props> = (props) => {
     <>
       <Stack direction="row" justify="space-between" alignItems="center">
         <Text>{prop.displayText}</Text>
-        <IconButton
-          aria-label="reset value"
-          icon={<RepeatIcon />}
-          size="sm"
-          variant="ghost"
-          onClick={handleReset}
-        />
+        {isChanged && (
+          <IconButton
+            aria-label="reset value"
+            icon={<RepeatIcon />}
+            size="sm"
+            variant="ghost"
+            onClick={handleReset}
+          />
+        )}
       </Stack>
-      <RadioGroup value={getPropByPath(path)} onChange={handleChange}>
+      <RadioGroup value={inputValue} onChange={handleChange}>
         <Stack spacing={5} direction="row" textTransform="capitalize">
           {Object.entries(prop.options).map(([label, _]: any) => (
             <Radio

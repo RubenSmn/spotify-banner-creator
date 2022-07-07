@@ -28,7 +28,8 @@ const labelStyles = {
 const SliderInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
   const { getPropByPath, setPropByPath } = useStyleUtils();
-  const sliderValue = getPropByPath(path).match(/-?\d+(?:\.\d+)?/)[0];
+  const inputValue = getPropByPath(path).match(/-?\d+(?:\.\d+)?/)[0];
+  const isChanged = String(inputValue) !== String(prop.defaultValue);
 
   const handleChange = (userInput: number) => {
     const value = userInput + prop.unit;
@@ -43,17 +44,19 @@ const SliderInput: React.FC<Props> = (props) => {
   return (
     <>
       <Stack direction="row" justify="space-between" alignItems="center">
-        <Text>{prop.displayText}</Text>
-        <IconButton
-          aria-label="reset value"
-          icon={<RepeatIcon />}
-          size="sm"
-          variant="ghost"
-          onClick={handleReset}
-        />
+        <Text my={1}>{prop.displayText}</Text>
+        {isChanged && (
+          <IconButton
+            aria-label="reset value"
+            icon={<RepeatIcon />}
+            size="sm"
+            variant="ghost"
+            onClick={handleReset}
+          />
+        )}
       </Stack>
       <Slider
-        value={sliderValue}
+        value={inputValue}
         min={prop.min}
         max={prop.max}
         step={prop.step}
