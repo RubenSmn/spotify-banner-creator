@@ -21,7 +21,7 @@ const Editor = () => {
   };
 
   return (
-    <Box minWidth="330px">
+    <Box minWidth="330px" overflowY='scroll' height='calc(100vh - 7rem)'>
       <Input value={bannerName} onChange={handleChange} />
       <Accordion defaultIndex={[0]} allowMultiple>
         {options.map(([categoryName, values]) => {

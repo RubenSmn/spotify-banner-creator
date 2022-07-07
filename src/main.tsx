@@ -8,7 +8,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement!).render(
   <React.StrictMode>
     <BannerProvider>
-      <ChakraProvider>
+      <ChakraProvider resetCSS>
         <App />
       </ChakraProvider>
     </BannerProvider>
