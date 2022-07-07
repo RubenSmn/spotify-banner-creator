@@ -21,7 +21,7 @@ const Editor = () => {
   };
 
   return (
-    <Box>
+    <Box minWidth="330px">
       <Input value={bannerName} onChange={handleChange} />
       <Accordion defaultIndex={[0]} allowMultiple>
         {options.map(([categoryName, values]) => {
