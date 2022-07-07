@@ -12,7 +12,7 @@ const App = () => {
         templateColumns="repeat(5, 1fr)"
         gap={4}
       >
-        <GridItem colSpan={3} backgroundColor="blue">
+        <GridItem colSpan={3}>
           <Preview />
         </GridItem>
         <GridItem colSpan={2}>

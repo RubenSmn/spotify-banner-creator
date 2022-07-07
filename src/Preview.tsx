@@ -11,6 +11,9 @@ const Preview = () => {
         my={8}
         minHeight="400px"
         minWidth="400px"
+        maxHeight="400px"
+        maxWidth="400px"
+        overflow="hidden"
         display="flex"
         sx={style.banner}
       >
