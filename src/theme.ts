@@ -15,7 +15,7 @@ const theme = extendTheme(
   },
   withDefaultColorScheme({
     colorScheme: 'green',
-    components: ['Tabs', 'Slider', 'Radio', 'Tag'],
+    components: ['Tabs', 'Slider', 'Radio', 'Tag', 'Button'],
   }),
 );
 
