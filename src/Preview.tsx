@@ -8,6 +8,7 @@ const Preview = () => {
   return (
     <Flex justifyContent="center">
       <Box
+        id="banner-capture"
         my={8}
         minHeight="400px"
         minWidth="400px"
