@@ -17,7 +17,6 @@ interface Props {
 }
 
 const labelStyles = {
-  pt: '7',
   fontSize: 'sm',
   textTransform: 'capitalize',
 };
@@ -57,17 +56,17 @@ const SliderInput: React.FC<Props> = (props) => {
           <SliderFilledTrack />
         </SliderTrack>
         <SliderThumb boxSize={3} />
-        <Flex justify="space-between" width="inherit">
-          {prop.helpers.map((helper) => {
-            const [key, _] = Object.entries(helper)[0];
-            return (
-              <Box key={`slm-${prop}-${key}`} sx={{ ...labelStyles }}>
-                {key}
-              </Box>
-            );
-          })}
-        </Flex>
       </Slider>
+      <Flex justify="space-between">
+        {prop.helpers.map((helper) => {
+          const [key, _] = Object.entries(helper)[0];
+          return (
+            <Box key={`slm-${prop}-${key}`} sx={{ ...labelStyles }}>
+              {key}
+            </Box>
+          );
+        })}
+      </Flex>
     </>
   );
 };
