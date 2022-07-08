@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react';
 import { PROPTYPES } from './interfaces';
-import SliderInput from './components/slider-input';
-import ColorInput from './components/color-input';
-import SelectInput from './components/select-input';
+import SliderInput from './components/SliderInput';
+import ColorInput from './components/ColorInput';
+import SelectInput from './components/SelectInput';
 import FontInput from './components/FontInput';
 
 const PropInput = (props: any) => {
