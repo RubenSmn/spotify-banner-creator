@@ -26,7 +26,7 @@ const CustomRadioGroup: React.FC<Props> = (props) => {
             colorScheme={activeColor(label)}
             textTransform="capitalize"
             size="sm"
-            onClick={() => handleClick(option)}
+            onClick={() => handleClick(label)}
           >
             {label}
           </Button>
