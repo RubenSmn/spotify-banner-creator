@@ -27,6 +27,7 @@ const InputHeader: React.FC<Props> = (props) => {
           aria-label="reset value"
           icon={<RepeatIcon />}
           size="sm"
+          colorScheme={'gray'}
           variant="ghost"
           onClick={onReset}
         />
