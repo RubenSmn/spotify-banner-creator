@@ -38,7 +38,17 @@ export const configProps: ConfigProps = {
         step: 0.05,
         defaultValue: 0,
         unit: 'rem',
-        helpers: [{ small: -0.5 }, { normal: 0 }, { large: 0.5 }],
+        helpers: [{ narrow: -0.5 }, { normal: 0 }, { wide: 0.5 }],
+      },
+      fontWeight: {
+        displayText: 'Font Weight',
+        input: PROPTYPES.SLIDER,
+        min: 100,
+        max: 700,
+        step: 100,
+        defaultValue: 400,
+        unit: '',
+        helpers: [{ light: 200 }, { normal: 400 }, { bold: 700 }],
       },
       color: {
         displayText: 'Color',
@@ -62,16 +72,6 @@ export const configProps: ConfigProps = {
           underline: 'underline',
           normal: 'normal',
           dotted: 'underline dotted',
-        },
-        defaultValue: 'normal',
-      },
-      fontWeight: {
-        displayText: 'Font Weight',
-        input: PROPTYPES.SELECT,
-        options: {
-          light: '200',
-          normal: '400',
-          bold: '700',
         },
         defaultValue: 'normal',
       },
@@ -114,10 +114,7 @@ export const defaultBannerStyle: BannerStyle = {
   typography: {
     lineHeight: configProps.typography.props.lineHeight.defaultValue,
     color: configProps.typography.props.color.defaultValue,
-    fontWeight:
-      configProps.typography.props.fontWeight.options[
-        configProps.typography.props.fontWeight.defaultValue
-      ],
+    fontWeight: configProps.typography.props.fontWeight.defaultValue,
   },
   banner: {
     background: configProps.banner.props.background.defaultValue,
