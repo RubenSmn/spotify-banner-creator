@@ -62,9 +62,9 @@ const SliderInput: React.FC<Props> = (props) => {
         step={prop.step}
         onChange={handleChange}
       >
-        <SliderTrack bg="red.100">
+        <SliderTrack>
           <Box position="relative" right={10} />
-          <SliderFilledTrack bg="tomato" />
+          <SliderFilledTrack />
         </SliderTrack>
         <SliderThumb boxSize={3} />
         <Flex justify="space-between" width="inherit">

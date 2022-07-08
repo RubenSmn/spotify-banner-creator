@@ -22,6 +22,9 @@ const FontInput: React.FC<Props> = (props) => {
   const currentValue = getPropByPath(path);
 
   const isChanged = String(currentValue) !== String(prop.defaultValue);
+  const activeColor = (font: string) => {
+    if (font !== currentValue) return 'gray';
+  };
 
   const handleChange = (newFont: string) => {
     setPropByPath(path, newFont);
@@ -50,10 +53,10 @@ const FontInput: React.FC<Props> = (props) => {
           <WrapItem key={`tif-${font}`}>
             <Tag
               onClick={() => handleChange(font)}
-              colorScheme={font === currentValue ? 'yellow' : 'gray'}
               fontFamily={font}
               cursor="pointer"
               size="lg"
+              colorScheme={activeColor(font)}
             >
               {font}
             </Tag>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, IconButton, RadioGroup, Radio, Stack } from '@chakra-ui/react';
+import { Text, IconButton, RadioGroup, Radio, HStack } from '@chakra-ui/react';
 import { RepeatIcon } from '@chakra-ui/icons';
 import { StylePropSelect } from '../interfaces';
 import { useStyleUtils } from '../Provider';
@@ -27,7 +27,7 @@ const SelectInput: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Stack direction="row" justify="space-between" alignItems="center">
+      <HStack justify="space-between" alignItems="center">
         <Text my={1}>{prop.displayText}</Text>
         {isChanged && (
           <IconButton
@@ -38,19 +38,15 @@ const SelectInput: React.FC<Props> = (props) => {
             onClick={handleReset}
           />
         )}
-      </Stack>
+      </HStack>
       <RadioGroup value={inputValue} onChange={handleChange}>
-        <Stack spacing={5} direction="row" textTransform="capitalize">
+        <HStack spacing={5} textTransform="capitalize">
           {Object.entries(prop.options).map(([label, value]: any) => (
-            <Radio
-              key={`prop-radio-${path}-${label}`}
-              colorScheme="yellow"
-              value={value}
-            >
+            <Radio key={`prop-radio-${path}-${label}`} value={value}>
               {label}
             </Radio>
           ))}
-        </Stack>
+        </HStack>
       </RadioGroup>
     </>
   );
