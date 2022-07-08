@@ -14,11 +14,11 @@ const SelectInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
   const { setPropByPath, getPropByPath } = useStyleUtils();
   const inputValue = getPropByPath(path);
-  const isChanged = String(inputValue) !== String(prop.defaultValue);
+  const isChanged =
+    String(inputValue) !== String(prop.options[prop.defaultValue]);
 
   const handleChange = (userInput: string) => {
-    const value = prop.options[userInput];
-    setPropByPath(path, value);
+    setPropByPath(path, userInput);
   };
 
   const handleReset = () => {
@@ -29,7 +29,7 @@ const SelectInput: React.FC<Props> = (props) => {
   return (
     <>
       <Stack direction="row" justify="space-between" alignItems="center">
-        <Text>{prop.displayText}</Text>
+        <Text my={1}>{prop.displayText}</Text>
         {isChanged && (
           <IconButton
             aria-label="reset value"
@@ -42,11 +42,11 @@ const SelectInput: React.FC<Props> = (props) => {
       </Stack>
       <RadioGroup value={inputValue} onChange={handleChange}>
         <Stack spacing={5} direction="row" textTransform="capitalize">
-          {Object.entries(prop.options).map(([label, _]: any) => (
+          {Object.entries(prop.options).map(([label, value]: any) => (
             <Radio
               key={`prop-radio-${path}-${label}`}
               colorScheme="yellow"
-              value={label}
+              value={value}
             >
               {label}
             </Radio>

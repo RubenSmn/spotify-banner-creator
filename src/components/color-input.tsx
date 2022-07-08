@@ -30,7 +30,7 @@ const ColorInput: React.FC<Props> = (props) => {
   return (
     <>
       <Stack direction="row" justify="space-between" alignItems="center">
-        <Text>{prop.displayText}</Text>
+        <Text my={1}>{prop.displayText}</Text>
         {isChanged && (
           <IconButton
             aria-label="reset value"
