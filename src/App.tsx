@@ -1,11 +1,12 @@
-import { Container, Grid, GridItem, Heading } from '@chakra-ui/react';
+import { Container, Grid, GridItem } from '@chakra-ui/react';
+import Header from './components/Header';
 import Editor from './Editor';
 import Preview from './Preview';
 
 const App = () => {
   return (
-    <Container maxW="5xl" minWidth="3xl" p={4}>
-      <Heading my={4}>Spotify Banner Creator</Heading>
+    <Container maxW="5xl" minWidth="3xl" px={4} height="100vh">
+      <Header />
       <Grid
         templateRows="repeat(1, 1fr)"
         templateColumns="repeat(5, 1fr)"
