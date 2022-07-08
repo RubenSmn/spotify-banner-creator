@@ -1,19 +1,27 @@
 import React from 'react';
-import { HStack, Text, IconButton } from '@chakra-ui/react';
-import { RepeatIcon } from '@chakra-ui/icons';
+import { HStack, Text, IconButton, Tooltip } from '@chakra-ui/react';
+import { InfoOutlineIcon, RepeatIcon } from '@chakra-ui/icons';
 
 interface Props {
   title: string;
+  info: string;
   isChanged: boolean;
   onReset: () => void;
 }
 
 const InputHeader: React.FC<Props> = (props) => {
-  const { title, isChanged, onReset } = props;
+  const { title, info, isChanged, onReset } = props;
 
   return (
     <HStack justify="space-between" alignItems="center">
-      <Text my={1}>{title}</Text>
+      <HStack>
+        <Text my={1}>{title}</Text>
+        {info && (
+          <Tooltip label={info}>
+            <InfoOutlineIcon />
+          </Tooltip>
+        )}
+      </HStack>
       {isChanged && (
         <IconButton
           aria-label="reset value"

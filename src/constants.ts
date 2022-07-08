@@ -53,6 +53,7 @@ export const configProps: ConfigProps = {
         defaultValue: 400,
         unit: '',
         helpers: [{ light: 200 }, { normal: 400 }, { bold: 700 }],
+        info: 'this can vary per font',
       },
       color: {
         displayText: 'Color',

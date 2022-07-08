@@ -41,6 +41,7 @@ const SliderInput: React.FC<Props> = (props) => {
     <>
       <InputHeader
         title={prop.displayText}
+        info={prop.info}
         isChanged={isChanged}
         onReset={handleReset}
       />

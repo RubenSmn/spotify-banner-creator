@@ -23,6 +23,7 @@ export interface StyleProp {
   displayText: string;
   input: PROPTYPES;
   defaultValue: string;
+  info: string;
 }
 
 export interface StylePropColor extends StyleProp {
