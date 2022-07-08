@@ -14,7 +14,7 @@ const theme = extendTheme(
     config,
   },
   withDefaultColorScheme({
-    colorScheme: 'yellow',
+    colorScheme: 'green',
     components: ['Tabs', 'Slider', 'Radio', 'Tag'],
   }),
 );

@@ -35,7 +35,7 @@ const DownloadButton = () => {
     <IconButton
       aria-label="download"
       icon={<DownloadIcon />}
-      colorScheme={'cyan'}
+      colorScheme={'green'}
       onClick={handleClick}
     />
   );

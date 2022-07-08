@@ -4,7 +4,9 @@ import ThemeSwitch from './ThemeSwitch';
 const Header = () => {
   return (
     <HStack py={4} justify="space-between">
-      <Heading fontFamily={'Roboto'}>Spotify Banner Creator</Heading>
+      <Heading fontFamily={'Roboto'} color="#1DB954">
+        Spotify Banner Creator
+      </Heading>
       <HStack spacing={3}>
         <Text color={'gray.500'}>
           <Link
