@@ -21,7 +21,7 @@ const Editor = () => {
   };
 
   return (
-    <Stack minWidth="350px" spacing={2}>
+    <Stack width="344px" spacing={2}>
       <Input value={bannerName} onChange={handleChange} />
       <Tabs>
         <TabList>

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, IconButton } from '@chakra-ui/react';
+import { Text, IconButton, RadioGroup, Radio, Stack } from '@chakra-ui/react';
 import { RepeatIcon } from '@chakra-ui/icons';
-import { RadioGroup, Radio, Stack } from '@chakra-ui/react';
 import { StylePropSelect } from '../interfaces';
 import { useStyleUtils } from '../Provider';
 
