@@ -1,9 +1,8 @@
 import React from 'react';
-import { Stack, Text, IconButton } from '@chakra-ui/react';
-import { RepeatIcon } from '@chakra-ui/icons';
 import ColorPicker from 'react-best-gradient-color-picker';
 import { StyleProp } from '../interfaces';
 import { useStyleUtils } from '../Provider';
+import InputHeader from './InputHeader';
 
 interface Props {
   prop: StyleProp;
@@ -29,18 +28,11 @@ const ColorInput: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Stack direction="row" justify="space-between" alignItems="center">
-        <Text my={1}>{prop.displayText}</Text>
-        {isChanged && (
-          <IconButton
-            aria-label="reset value"
-            icon={<RepeatIcon />}
-            size="sm"
-            variant="ghost"
-            onClick={handleReset}
-          />
-        )}
-      </Stack>
+      <InputHeader
+        title={prop.displayText}
+        isChanged={isChanged}
+        onReset={handleReset}
+      />
       <ColorPicker
         value={inputValue}
         onChange={handleChange}

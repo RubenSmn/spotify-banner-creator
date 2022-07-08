@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  Tag,
-  HStack,
-  IconButton,
-  Text,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react';
+import { Tag, Wrap, WrapItem } from '@chakra-ui/react';
 import { StylePropFont } from '../interfaces';
-import { RepeatIcon } from '@chakra-ui/icons';
 import { useStyleUtils } from '../Provider';
+import InputHeader from './InputHeader';
 
 interface Props {
   prop: StylePropFont;
@@ -20,8 +13,8 @@ const FontInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
   const { getPropByPath, setPropByPath } = useStyleUtils();
   const currentValue = getPropByPath(path);
-
   const isChanged = String(currentValue) !== String(prop.defaultValue);
+
   const activeColor = (font: string) => {
     if (font !== currentValue) return 'gray';
   };
@@ -36,18 +29,11 @@ const FontInput: React.FC<Props> = (props) => {
 
   return (
     <>
-      <HStack justify="space-between" alignItems="center">
-        <Text my={1}>{prop.displayText}</Text>
-        {isChanged && (
-          <IconButton
-            aria-label="reset value"
-            icon={<RepeatIcon />}
-            size="sm"
-            variant="ghost"
-            onClick={handleReset}
-          />
-        )}
-      </HStack>
+      <InputHeader
+        title={prop.displayText}
+        isChanged={isChanged}
+        onReset={handleReset}
+      />
       <Wrap>
         {prop.options.map((font) => (
           <WrapItem key={`tif-${font}`}>

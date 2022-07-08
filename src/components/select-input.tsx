@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, IconButton, RadioGroup, Radio, HStack } from '@chakra-ui/react';
-import { RepeatIcon } from '@chakra-ui/icons';
+import { RadioGroup, Radio, HStack } from '@chakra-ui/react';
 import { StylePropSelect } from '../interfaces';
 import { useStyleUtils } from '../Provider';
+import InputHeader from './InputHeader';
 
 interface Props {
   prop: StylePropSelect;
@@ -27,18 +27,11 @@ const SelectInput: React.FC<Props> = (props) => {
 
   return (
     <>
-      <HStack justify="space-between" alignItems="center">
-        <Text my={1}>{prop.displayText}</Text>
-        {isChanged && (
-          <IconButton
-            aria-label="reset value"
-            icon={<RepeatIcon />}
-            size="sm"
-            variant="ghost"
-            onClick={handleReset}
-          />
-        )}
-      </HStack>
+      <InputHeader
+        title={prop.displayText}
+        isChanged={isChanged}
+        onReset={handleReset}
+      />
       <RadioGroup value={inputValue} onChange={handleChange}>
         <HStack spacing={5} textTransform="capitalize">
           {Object.entries(prop.options).map(([label, value]: any) => (

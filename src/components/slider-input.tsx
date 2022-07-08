@@ -6,13 +6,10 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Flex,
-  Text,
-  Stack,
-  IconButton,
 } from '@chakra-ui/react';
-import { RepeatIcon } from '@chakra-ui/icons';
 import { StylePropSlider } from '../interfaces';
 import { useStyleUtils } from '../Provider';
+import InputHeader from './InputHeader';
 
 interface Props {
   prop: StylePropSlider;
@@ -43,18 +40,11 @@ const SliderInput: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Stack direction="row" justify="space-between" alignItems="center">
-        <Text my={1}>{prop.displayText}</Text>
-        {isChanged && (
-          <IconButton
-            aria-label="reset value"
-            icon={<RepeatIcon />}
-            size="sm"
-            variant="ghost"
-            onClick={handleReset}
-          />
-        )}
-      </Stack>
+      <InputHeader
+        title={prop.displayText}
+        isChanged={isChanged}
+        onReset={handleReset}
+      />
       <Slider
         value={inputValue}
         min={prop.min}
