@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { configProps } from './constants';
+import { configProps, defaultBannerStyle } from './constants';
 import { PROPTYPES } from './interfaces';
 
 interface Props {
   children: React.ReactNode;
 }
 
-const getDefaultValues = () => {
+const getDefaultFromConfig = () => {
   const style: any = {};
   Object.keys(configProps).map((category: string) => {
     const props = Object.entries(configProps[category].props);
@@ -28,7 +28,7 @@ const getDefaultValues = () => {
 const BannerContext = React.createContext<any>({});
 
 const BannerProvider: React.FC<Props> = ({ children }) => {
-  const [bannerStyle, setBannerStyle] = useState(getDefaultValues());
+  const [bannerStyle, setBannerStyle] = useState(defaultBannerStyle);
   const [bannerName, setBannerName] = useState('Funky Finesse');
 
   /**

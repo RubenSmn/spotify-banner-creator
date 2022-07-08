@@ -1,15 +1,18 @@
 export interface BannerStyle {
   typography: {
-    lineHeight: string;
     fontFamily: string;
-    color: string;
     fontWeight: string;
-  };
+    fontStyle: string;
+    color: string;
+    letterSpacing: string;
+    lineHeight: string;
+    textTransform: string;
+  },
   banner: {
     background: string;
     justifyContent: string;
     alignItems: string;
-  };
+  },
 }
 
 export enum PROPTYPES {

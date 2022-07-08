@@ -24,6 +24,7 @@ export const configProps: ConfigProps = {
         displayText: 'Font',
         input: PROPTYPES.FONT,
         options: [
+          'Arial',
           'Roboto',
           'Lobster',
           'Finlandica',
@@ -58,7 +59,7 @@ export const configProps: ConfigProps = {
       color: {
         displayText: 'Color',
         input: PROPTYPES.COLOR,
-        defaultValue: '#dd7',
+        defaultValue: '#fff',
       },
       fontStyle: {
         displayText: 'Text Style',
@@ -98,7 +99,7 @@ export const configProps: ConfigProps = {
         displayText: 'Background Color',
         input: PROPTYPES.COLOR,
         defaultValue:
-          'linear-gradient(45deg, rgba(102,102,102,1) 0%, RGBA(36, 42, 43, 1) 100%)',
+          'linear-gradient(45deg, #882322 0%, #d24442 100%)',
       },
       justifyContent: {
         displayText: 'Horizontal Text Position',
@@ -126,13 +127,16 @@ export const configProps: ConfigProps = {
 
 export const defaultBannerStyle: BannerStyle = {
   typography: {
-    fontFamily: configProps.typography.props.fontFamily.defaultValue,
-    lineHeight: configProps.typography.props.lineHeight.defaultValue,
-    color: configProps.typography.props.color.defaultValue,
-    fontWeight: configProps.typography.props.fontWeight.defaultValue,
+    fontFamily: 'Roboto',
+    fontWeight: '700',
+    fontStyle: 'normal',
+    color: '#fff',
+    letterSpacing: '0rem',
+    lineHeight: '4rem',
+    textTransform: 'capitalize',
   },
   banner: {
-    background: configProps.banner.props.background.defaultValue,
+    background: 'linear-gradient(45deg, #882322 0%, #d24442 100%)',
     justifyContent:
       configProps.banner.props.justifyContent.options[
         configProps.banner.props.justifyContent.defaultValue
