@@ -1,6 +1,7 @@
 export interface BannerStyle {
   typography: {
     lineHeight: string;
+    fontFamily: string;
     color: string;
     fontWeight: string;
   };
@@ -15,6 +16,7 @@ export enum PROPTYPES {
   COLOR = 'color',
   SELECT = 'select',
   SLIDER = 'slider',
+  FONT = 'font',
 }
 
 export interface StyleProp {
@@ -39,4 +41,9 @@ export interface StylePropSlider extends StyleProp {
   step: number;
   unit: string;
   helpers: { [name: string]: number }[];
+}
+
+export interface StylePropFont extends StyleProp {
+  input: PROPTYPES.FONT;
+  options: string[];
 }

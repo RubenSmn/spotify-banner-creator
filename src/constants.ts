@@ -20,6 +20,19 @@ export const configProps: ConfigProps = {
   typography: {
     displayText: 'Text Style',
     props: {
+      fontFamily: {
+        displayText: 'Font',
+        input: PROPTYPES.FONT,
+        options: [
+          'Roboto',
+          'Finlandica',
+          'Oswald',
+          'Arima',
+          'ZCOOL KuaiLe',
+          'Cookie',
+        ],
+        defaultValue: 'Roboto',
+      },
       lineHeight: {
         displayText: 'Vertical Word Spacing',
         input: PROPTYPES.SLIDER,
@@ -112,6 +125,7 @@ export const configProps: ConfigProps = {
 
 export const defaultBannerStyle: BannerStyle = {
   typography: {
+    fontFamily: configProps.typography.props.fontFamily.defaultValue,
     lineHeight: configProps.typography.props.lineHeight.defaultValue,
     color: configProps.typography.props.color.defaultValue,
     fontWeight: configProps.typography.props.fontWeight.defaultValue,

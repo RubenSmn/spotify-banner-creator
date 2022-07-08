@@ -3,6 +3,7 @@ import { PROPTYPES } from './interfaces';
 import SliderInput from './components/slider-input';
 import ColorInput from './components/color-input';
 import SelectInput from './components/select-input';
+import FontInput from './components/FontInput';
 
 const PropInput = (props: any) => {
   const { prop, path } = props;
@@ -17,6 +18,9 @@ const PropInput = (props: any) => {
       break;
     case PROPTYPES.SLIDER:
       input = <SliderInput prop={prop} path={path} />;
+      break;
+    case PROPTYPES.FONT:
+      input = <FontInput prop={prop} path={path} />;
       break;
   }
 
