@@ -53,7 +53,7 @@ export const configProps: ConfigProps = {
         step: 0.05,
         defaultValue: 0,
         unit: 'rem',
-        helpers: [{ narrow: -0.5 }, { normal: 0 }, { wide: 0.5 }],
+        helpers: [{ narrow: -0.5 }, { wide: 0.5 }],
       },
       fontWeight: {
         displayText: 'Font Weight',
@@ -63,7 +63,7 @@ export const configProps: ConfigProps = {
         step: 100,
         defaultValue: 400,
         unit: '',
-        helpers: [{ light: 200 }, { normal: 400 }, { bold: 700 }],
+        helpers: [{ light: 200 }, { bold: 700 }],
         info: 'this can vary per font',
       },
       color: {
@@ -88,7 +88,7 @@ export const configProps: ConfigProps = {
         step: 0.1,
         defaultValue: 4,
         unit: 'rem',
-        helpers: [{ small: 3 }, { normal: 4 }, { large: 5 }],
+        helpers: [{ small: 3 }, { large: 5 }],
       },
       textTransform: {
         displayText: 'Text Transform',
