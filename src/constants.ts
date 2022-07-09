@@ -35,6 +35,16 @@ export const configProps: ConfigProps = {
         ],
         defaultValue: 'Roboto',
       },
+      fontSize: {
+        displayText: 'Size',
+        input: PROPTYPES.SLIDER,
+        min: 3,
+        max: 5,
+        step: 0.2,
+        defaultValue: 4,
+        unit: 'rem',
+        helpers: [{ small: 3 }, { large: 5 }],
+      },
       letterSpacing: {
         displayText: 'Letter Spacing',
         input: PROPTYPES.SLIDER,
@@ -98,8 +108,7 @@ export const configProps: ConfigProps = {
       background: {
         displayText: 'Background Color',
         input: PROPTYPES.COLOR,
-        defaultValue:
-          'linear-gradient(45deg, #882322 0%, #d24442 100%)',
+        defaultValue: 'linear-gradient(45deg, #882322 0%, #d24442 100%)',
       },
       justifyContent: {
         displayText: 'Horizontal Text Position',
@@ -130,6 +139,7 @@ export const defaultBannerStyle: BannerStyle = {
     fontFamily: 'Roboto',
     fontWeight: '700',
     fontStyle: 'normal',
+    fontSize: '4rem',
     color: '#fff',
     letterSpacing: '0rem',
     lineHeight: '4rem',

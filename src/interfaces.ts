@@ -3,16 +3,17 @@ export interface BannerStyle {
     fontFamily: string;
     fontWeight: string;
     fontStyle: string;
+    fontSize: string;
     color: string;
     letterSpacing: string;
     lineHeight: string;
     textTransform: string;
-  },
+  };
   banner: {
     background: string;
     justifyContent: string;
     alignItems: string;
-  },
+  };
 }
 
 export enum PROPTYPES {

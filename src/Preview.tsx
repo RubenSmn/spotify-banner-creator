@@ -19,7 +19,7 @@ const Preview = () => {
         sx={style.banner}
       >
         <Box maxWidth="min-content">
-          <Text fontSize="4rem" fontFamily="Roboto" sx={style.typography}>
+          <Text fontFamily="Roboto" sx={style.typography}>
             {bannerName}
           </Text>
         </Box>
