@@ -1,3 +1,13 @@
+export interface ConfigProps {
+  [category: string]: {
+    displayText: string;
+    props: {
+      // [prop: string]: StylePropColor | StylePropSelect | StylePropSlider;
+      [prop: string]: any;
+    };
+  };
+}
+
 export interface BannerStyle {
   typography: {
     fontFamily: string;
@@ -8,6 +18,9 @@ export interface BannerStyle {
     letterSpacing: string;
     lineHeight: string;
     textTransform: string;
+  };
+  icon: {
+    icon: string;
   };
   banner: {
     background: string;
@@ -21,6 +34,7 @@ export enum PROPTYPES {
   SELECT = 'select',
   SLIDER = 'slider',
   FONT = 'font',
+  ICON = 'icon',
 }
 
 export interface StyleProp {
@@ -51,4 +65,8 @@ export interface StylePropSlider extends StyleProp {
 export interface StylePropFont extends StyleProp {
   input: PROPTYPES.FONT;
   options: string[];
+}
+
+export interface StylePropIcon extends StyleProp {
+  input: PROPTYPES.ICON;
 }

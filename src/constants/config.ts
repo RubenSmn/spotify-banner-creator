@@ -1,20 +1,4 @@
-import {
-  PROPTYPES,
-  BannerStyle,
-  StylePropColor,
-  StylePropSelect,
-  StylePropSlider,
-} from './interfaces';
-
-interface ConfigProps {
-  [category: string]: {
-    displayText: string;
-    props: {
-      // [prop: string]: StylePropColor | StylePropSelect | StylePropSlider;
-      [prop: string]: any;
-    };
-  };
-}
+import { ConfigProps, PROPTYPES } from '../interfaces';
 
 export const configProps: ConfigProps = {
   typography: {
@@ -102,6 +86,16 @@ export const configProps: ConfigProps = {
       },
     },
   },
+  icon: {
+    displayText: 'Icons',
+    props: {
+      icon: {
+        displayText: 'Icon',
+        input: PROPTYPES.ICON,
+        defaultValue: 'coffee',
+      },
+    },
+  },
   banner: {
     displayText: 'Banner Style',
     props: {
@@ -131,29 +125,5 @@ export const configProps: ConfigProps = {
         defaultValue: 'center',
       },
     },
-  },
-};
-
-export const defaultBannerStyle: BannerStyle = {
-  typography: {
-    fontFamily: 'Roboto',
-    fontWeight: '700',
-    fontStyle: 'normal',
-    fontSize: '4rem',
-    color: '#fff',
-    letterSpacing: '0rem',
-    lineHeight: '4rem',
-    textTransform: 'capitalize',
-  },
-  banner: {
-    background: 'linear-gradient(45deg, #882322 0%, #d24442 100%)',
-    justifyContent:
-      configProps.banner.props.justifyContent.options[
-        configProps.banner.props.justifyContent.defaultValue
-      ],
-    alignItems:
-      configProps.banner.props.alignItems.options[
-        configProps.banner.props.alignItems.defaultValue
-      ],
   },
 };
