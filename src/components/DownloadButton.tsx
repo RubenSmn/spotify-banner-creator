@@ -18,6 +18,8 @@ const DownloadButton = () => {
     html2canvas(captureObject, {
       width: 400,
       height: 400,
+      x: 1,
+      y: 1,
     }).then((canvas) => {
       // create download link
       const a = document.createElement('a');

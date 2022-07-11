@@ -26,10 +26,10 @@ const Preview = () => {
       <Box
         id="banner-capture"
         my={8}
-        minHeight="400px"
-        minWidth="400px"
-        maxHeight="400px"
-        maxWidth="400px"
+        minHeight="402px"
+        minWidth="402px"
+        maxHeight="402px"
+        maxWidth="402px"
         overflow="hidden"
         display="flex"
         sx={style.banner}
