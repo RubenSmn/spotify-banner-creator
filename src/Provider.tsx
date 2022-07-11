@@ -11,7 +11,7 @@ const getDefaultFromConfig = () => {
   Object.keys(configProps).map((category: string) => {
     const props = Object.entries(configProps[category].props);
     style[category] = props.reduce((acc: any, val) => {
-      const [prop, values] = val;
+      const [prop, values]: any = val;
       switch (values.input) {
         case PROPTYPES.SELECT:
           return { ...acc, [prop]: values.options[values.defaultValue] };
@@ -30,6 +30,8 @@ const BannerContext = React.createContext<any>({});
 const BannerProvider: React.FC<Props> = ({ children }) => {
   const [bannerStyle, setBannerStyle] = useState(defaultBannerStyle);
   const [bannerName, setBannerName] = useState('Funky Finesse');
+  const [bannerIcon, setBannerIcon] = useState('code');
+  const [displayIcon, setDisplayIcon] = useState(false);
 
   /**
    * set bannr style prop by path
@@ -38,7 +40,7 @@ const BannerProvider: React.FC<Props> = ({ children }) => {
    * setPropByPath('banner.backgroundColor', '#ff7')
    */
   const setPropByPath = (propPath: string, value: string) => {
-    if (!value || !propPath) return null;
+    if (value === null || value === undefined || !propPath) return null;
     const temp = { ...bannerStyle };
     propPath.split('.').reduce((acc: any, curr: any, _: any, src: any) => {
       if (curr === src[src.length - 1]) {
@@ -72,6 +74,10 @@ const BannerProvider: React.FC<Props> = ({ children }) => {
         setBannerStyle,
         bannerName,
         setBannerName,
+        bannerIcon,
+        setBannerIcon,
+        displayIcon,
+        setDisplayIcon,
         getPropByPath,
         setPropByPath,
       }}
@@ -91,6 +97,16 @@ export const useBannerStyle = () => {
 export const useBannerName = () => {
   const { bannerName, setBannerName } = React.useContext(BannerContext);
   return [bannerName, setBannerName];
+};
+
+export const useBannerIcon = () => {
+  const { bannerIcon, setBannerIcon } = React.useContext(BannerContext);
+  return [bannerIcon, setBannerIcon];
+};
+
+export const useDisplayIcon = () => {
+  const { displayIcon, setDisplayIcon } = React.useContext(BannerContext);
+  return [displayIcon, setDisplayIcon];
 };
 
 export const useStyleUtils = () => {

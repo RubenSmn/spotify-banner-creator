@@ -20,7 +20,8 @@ export interface BannerStyle {
     textTransform: string;
   };
   icon: {
-    icon: string;
+    fontSize: string;
+    color: string;
   };
   banner: {
     background: string;

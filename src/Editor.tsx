@@ -1,32 +1,21 @@
 import {
   Stack,
-  Input,
   Tabs,
   TabList,
   TabPanels,
   TabPanel,
   Tab,
 } from '@chakra-ui/react';
-import DownloadButton from './components/DownloadButton';
+import BannerContentInput from './components/BannerContentInput';
 import { configProps } from './constants';
 import PropInput from './PropInput';
-import { useBannerName } from './Provider';
 
 const Editor = () => {
   const categories = Object.entries(configProps);
-  const [bannerName, setBannerName] = useBannerName();
-
-  const handleChange = (e: any) => {
-    const userInput = e.target.value;
-    setBannerName(userInput);
-  };
 
   return (
     <Stack width="344px" spacing={2}>
-      <Stack direction="row" justify="space-between">
-        <Input value={bannerName} onChange={handleChange} />
-        <DownloadButton />
-      </Stack>
+      <BannerContentInput />
       <Tabs>
         <TabList>
           {categories.map(([categoryName, values]) => {

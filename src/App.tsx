@@ -2,6 +2,9 @@ import { Container, Grid, GridItem } from '@chakra-ui/react';
 import Header from './components/Header';
 import Editor from './Editor';
 import Preview from './Preview';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+library.add(fas);
 
 const App = () => {
   return (

@@ -1,9 +1,25 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import { useBannerName, useBannerStyle } from './Provider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  useBannerName,
+  useBannerIcon,
+  useBannerStyle,
+  useDisplayIcon,
+} from './Provider';
 
 const Preview = () => {
   const [style, _] = useBannerStyle();
   const [bannerName] = useBannerName();
+  const [bannerIcon] = useBannerIcon();
+  const [displayIcon] = useDisplayIcon();
+
+  const bannerContent = displayIcon ? (
+    <Text sx={style.icon}>
+      <FontAwesomeIcon icon={`fa-solid fa-${bannerIcon}`} />
+    </Text>
+  ) : (
+    <Text sx={style.typography}>{bannerName}</Text>
+  );
 
   return (
     <Flex justifyContent="center">
@@ -18,11 +34,7 @@ const Preview = () => {
         display="flex"
         sx={style.banner}
       >
-        <Box maxWidth="min-content">
-          <Text fontFamily="Roboto" sx={style.typography}>
-            {bannerName}
-          </Text>
-        </Box>
+        <Box maxWidth="min-content">{bannerContent}</Box>
       </Box>
     </Flex>
   );

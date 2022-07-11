@@ -87,12 +87,22 @@ export const configProps: ConfigProps = {
     },
   },
   icon: {
-    displayText: 'Icons',
+    displayText: 'Icon Style',
     props: {
-      icon: {
-        displayText: 'Icon',
-        input: PROPTYPES.ICON,
-        defaultValue: 'coffee',
+      fontSize: {
+        displayText: 'Size',
+        input: PROPTYPES.SLIDER,
+        min: 4,
+        max: 12,
+        step: 0.2,
+        defaultValue: 8,
+        unit: 'rem',
+        helpers: [{ small: 3 }, { large: 5 }],
+      },
+      color: {
+        displayText: 'Color',
+        input: PROPTYPES.COLOR,
+        defaultValue: '#fff',
       },
     },
   },
