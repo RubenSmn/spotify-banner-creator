@@ -1,11 +1,12 @@
 import { IconButton } from '@chakra-ui/react';
 import { DownloadIcon } from '@chakra-ui/icons';
 import html2canvas from 'html2canvas';
-import { useBannerName, useBannerIcon } from '../Provider';
+import { useBannerName, useBannerIcon, useDisplayIcon } from '../Provider';
 
 const DownloadButton = () => {
   const [bannerName] = useBannerName();
   const [bannerIcon] = useBannerIcon();
+  const [displayIcon] = useDisplayIcon();
 
   const handleClick = () => {
     const captureObject = document.getElementById('banner-capture')!;
@@ -13,7 +14,7 @@ const DownloadButton = () => {
 
     // should find better solution !!
     // add offset to text so canvas text is centered
-    if (!bannerIcon) textObject.style.paddingBottom = '4rem';
+    if (!displayIcon) textObject.style.paddingBottom = '4rem';
 
     html2canvas(captureObject, {
       width: 400,
@@ -26,7 +27,11 @@ const DownloadButton = () => {
       a.href = canvas
         .toDataURL('image/png')
         .replace('image/png', 'image/octet-stream');
-      a.download = `${bannerName.replace(' ', '')}.png`;
+      if (displayIcon) {
+        a.download = `${bannerIcon}.png`;
+      } else {
+        a.download = `${bannerName.replace(' ', '')}.png`;
+      }
       a.click();
     });
 
