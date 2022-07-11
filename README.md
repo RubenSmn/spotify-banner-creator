@@ -1,7 +1,7 @@
 # Spotify Banner Creator
 Tool to create minimalistic Playlist Banners/Covers for Spotify
 
-Live Demo will be up soon! :building_construction:
+Checkout [here](https://spotify-banner-creator.vercel.app/)!
 
 ## Preview
 Text Config|Banner Config
