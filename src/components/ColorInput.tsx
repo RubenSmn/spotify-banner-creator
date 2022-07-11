@@ -15,7 +15,7 @@ const ColorInput: React.FC<Props> = (props) => {
   const inputValue = getPropByPath(path);
   const isChanged = String(inputValue) !== String(prop.defaultValue);
 
-  const isTypography = /typography/i.test(path);
+  const isTypography = /typography|icon/i.test(path);
 
   const handleChange = (userInput: string) => {
     const value = userInput;
