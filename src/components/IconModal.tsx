@@ -18,6 +18,7 @@ import {
 import iconList from '../constants/icon-options';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useBannerIcon } from '../Provider';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const IconModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -84,7 +85,7 @@ const IconModal = () => {
                     cursor="pointer"
                     onClick={() => handleClick(icon)}
                   >
-                    <FontAwesomeIcon icon={`fa fa-${icon}`} />
+                    <FontAwesomeIcon icon={`fa fa-${icon}` as IconProp} />
                   </GridItem>
                 </Tooltip>
               ))}

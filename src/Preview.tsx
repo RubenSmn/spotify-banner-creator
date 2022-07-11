@@ -1,4 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   useBannerName,
@@ -15,7 +16,7 @@ const Preview = () => {
 
   const bannerContent = displayIcon ? (
     <Text sx={style.icon}>
-      <FontAwesomeIcon icon={`fa-solid fa-${bannerIcon}`} />
+      <FontAwesomeIcon icon={`fa-solid fa-${bannerIcon}` as IconProp} />
     </Text>
   ) : (
     <Text sx={style.typography}>{bannerName}</Text>

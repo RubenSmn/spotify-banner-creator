@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DownloadButton from './DownloadButton';
 import IconModal from './IconModal';
 import { useBannerName, useDisplayIcon } from '../Provider';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const BannerContentInput = () => {
   const [bannerName, setBannerName] = useBannerName();
@@ -18,7 +19,11 @@ const BannerContentInput = () => {
       <Tooltip label="Change between Icon and Text" defaultIsOpen hasArrow>
         <IconButton
           aria-label="change content type"
-          icon={<FontAwesomeIcon icon={displayIcon ? 'fa-icons' : 'fa-font'} />}
+          icon={
+            <FontAwesomeIcon
+              icon={(displayIcon ? 'fa-icons' : 'fa-font') as IconProp}
+            />
+          }
           colorScheme="cyan"
           onClick={() => setDisplayIcon((prev: boolean) => !prev)}
         />
