@@ -42,7 +42,7 @@ const IconModal = () => {
 
   return (
     <>
-      <Input onFocus={onOpen} value={bannerIcon} readOnly />
+      <Input onClick={onOpen} value={bannerIcon} readOnly />
       <Modal
         initialFocusRef={initialRef}
         isOpen={isOpen}
