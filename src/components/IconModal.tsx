@@ -70,7 +70,7 @@ const IconModal = () => {
               {filterList.map((icon) => (
                 <Tooltip
                   key={`igi-${icon}`}
-                  label={icon.replace('-', ' ')}
+                  label={icon.replace(/-/g, ' ')}
                   textTransform="capitalize"
                 >
                   <GridItem
