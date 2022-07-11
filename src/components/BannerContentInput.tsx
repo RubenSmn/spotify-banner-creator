@@ -1,4 +1,4 @@
-import { Stack, Input, IconButton } from '@chakra-ui/react';
+import { Stack, Input, IconButton, Tooltip } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DownloadButton from './DownloadButton';
 import IconModal from './IconModal';
@@ -15,12 +15,14 @@ const BannerContentInput = () => {
 
   return (
     <Stack direction="row" justify="space-between">
-      <IconButton
-        aria-label="change content type"
-        icon={<FontAwesomeIcon icon={displayIcon ? 'fa-icons' : 'fa-font'} />}
-        colorScheme="cyan"
-        onClick={() => setDisplayIcon((prev: boolean) => !prev)}
-      />
+      <Tooltip label="Change between Icon and Text" defaultIsOpen hasArrow>
+        <IconButton
+          aria-label="change content type"
+          icon={<FontAwesomeIcon icon={displayIcon ? 'fa-icons' : 'fa-font'} />}
+          colorScheme="cyan"
+          onClick={() => setDisplayIcon((prev: boolean) => !prev)}
+        />
+      </Tooltip>
       {!displayIcon ? (
         <Input value={bannerName} onChange={handleTextChange} />
       ) : (
