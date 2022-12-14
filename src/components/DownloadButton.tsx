@@ -1,4 +1,4 @@
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, Tooltip } from '@chakra-ui/react';
 import { DownloadIcon } from '@chakra-ui/icons';
 import html2canvas from 'html2canvas';
 import { useBannerName, useBannerIcon, useDisplayIcon } from '../Provider';
@@ -40,12 +40,14 @@ const DownloadButton = () => {
   };
 
   return (
-    <IconButton
-      aria-label="download"
-      icon={<DownloadIcon />}
-      colorScheme={'green'}
-      onClick={handleClick}
-    />
+    <Tooltip label="Download your Banner" hasArrow>
+      <IconButton
+        aria-label="download"
+        icon={<DownloadIcon />}
+        colorScheme={'green'}
+        onClick={handleClick}
+      />
+    </Tooltip>
   );
 };
 
