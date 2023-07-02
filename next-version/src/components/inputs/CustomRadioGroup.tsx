@@ -22,7 +22,7 @@ export function CustomRadioGroup({
           <button
             key={`prop-radio-${option}`}
             onClick={() => handleClick(label)}
-            className={`px-2 py-1 capitalize ${
+            className={`px-3 py-2 text-sm font-semibold capitalize ${
               label !== value
                 ? "bg-white/10 text-white hover:bg-white/20"
                 : "bg-green-400 text-black hover:bg-green-500"
