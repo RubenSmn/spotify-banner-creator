@@ -44,8 +44,8 @@ const Editor = () => {
                 value={categoryName}
                 className={`border-b-2 px-4 py-2 text-lg ${
                   currentTab === categoryName
-                    ? "dark:border-green-600"
-                    : "dark:border-gray-600"
+                    ? "border-green-600 dark:border-green-400"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
               >
                 {displayText}

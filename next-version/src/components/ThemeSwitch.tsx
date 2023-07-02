@@ -42,12 +42,12 @@ export function ThemeSwitch() {
       onClick={() => {
         toggleTheme();
       }}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-amber-600 dark:text-black dark:hover:bg-amber-700 dark:focus:ring-amber-500"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-amber-300 dark:text-gray-800 dark:hover:bg-amber-400 dark:focus:ring-amber-200"
     >
       {theme === "dark" ? (
-        <SunIcon className="text-white" height={24} width={24} />
+        <SunIcon height={24} width={24} />
       ) : (
-        <MoonIcon className="text-white" height={24} width={24} />
+        <MoonIcon height={24} width={24} />
       )}
     </button>
   );

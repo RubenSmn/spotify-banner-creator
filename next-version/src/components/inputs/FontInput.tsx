@@ -38,10 +38,10 @@ function FontInput({ prop, path }: FontInputProps) {
             style={{
               fontFamily: `var(--font-${font.replace(" ", "-").toLowerCase()})`,
             }}
-            className={`rounded-md px-2 py-1 hover:bg-green-400 hover:text-black ${
+            className={`rounded-md px-2 py-1 ${
               font !== currentValue
-                ? "bg-white/10 text-white"
-                : "bg-green-400 text-black"
+                ? "bg-slate-200 text-black hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600"
+                : "bg-green-600 text-white dark:bg-green-400 dark:text-black hover:dark:bg-green-500"
             }`}
           >
             {font}

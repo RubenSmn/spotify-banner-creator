@@ -20,7 +20,7 @@ export function Tooltip({ children, label }: TooltipProps) {
     <TooltipComponent>
       <TooltipTrigger asChild>{children}</TooltipTrigger>
       <TooltipPositioner className="z-40">
-        <TooltipContent className="rounded-md bg-slate-700 px-2 py-1">
+        <TooltipContent className="rounded-md bg-slate-300 px-2 py-1 text-black dark:bg-slate-700 dark:text-white">
           {label}
         </TooltipContent>
       </TooltipPositioner>

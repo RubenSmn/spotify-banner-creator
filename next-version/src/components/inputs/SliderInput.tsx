@@ -51,9 +51,9 @@ const SliderInput: React.FC<Props> = (props) => {
       >
         <SliderLabel className="sr-only">{prop.displayText}</SliderLabel>
         <SliderControl>
-          <SliderTrack className="h-1 rounded-lg dark:bg-gray-600">
+          <SliderTrack className="h-1 rounded-lg bg-gray-300 dark:bg-gray-600">
             <SliderRange
-              className="h-1 rounded-lg active:scale-110 dark:bg-green-400"
+              className="h-1 rounded-lg bg-green-600 active:scale-110 dark:bg-green-400"
               style={{
                 width: `${
                   ((Number(inputValue) - prop.min) / (prop.max - prop.min)) *
@@ -62,7 +62,7 @@ const SliderInput: React.FC<Props> = (props) => {
               }}
             />
           </SliderTrack>
-          <SliderThumb className="-top-3/4 h-3 w-3 rounded-full dark:bg-green-100" />
+          <SliderThumb className="-top-3/4 h-3 w-3 rounded-full bg-white shadow dark:bg-green-100" />
         </SliderControl>
       </Slider>
       <div className="flex justify-between">
