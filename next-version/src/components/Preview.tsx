@@ -10,7 +10,7 @@ import {
 } from "./Provider";
 
 const Preview = () => {
-  const [style, _] = useBannerStyle();
+  const [style] = useBannerStyle();
   const [bannerName] = useBannerName();
   const [bannerIcon] = useBannerIcon();
   const [displayIcon] = useDisplayIcon();
