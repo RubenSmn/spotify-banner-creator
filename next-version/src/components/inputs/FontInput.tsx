@@ -1,17 +1,15 @@
 "use client";
 
-import React from "react";
 import { StylePropFont } from "@/interfaces";
 import { useStyleUtils } from "../Provider";
 import InputHeader from "./InputHeader";
 
-interface Props {
+type FontInputProps = {
   prop: StylePropFont;
   path: string;
-}
+};
 
-const FontInput: React.FC<Props> = (props) => {
-  const { prop, path } = props;
+function FontInput({ prop, path }: FontInputProps) {
   const { getPropByPath, setPropByPath } = useStyleUtils();
   const currentValue = getPropByPath(path);
   const isChanged = String(currentValue) !== String(prop.defaultValue);
@@ -52,6 +50,6 @@ const FontInput: React.FC<Props> = (props) => {
       </div>
     </>
   );
-};
+}
 
 export default FontInput;
