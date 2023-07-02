@@ -35,7 +35,7 @@ const Preview = () => {
       <div
         id="banner-capture"
         style={style.banner}
-        className="my-8 flex h-[402px] w-[402px] overflow-hidden"
+        className="my-8 flex aspect-square h-[402px] min-h-[402px] w-[402px] min-w-[402px] overflow-hidden"
       >
         <div className="max-w-min">{bannerContent}</div>
       </div>

@@ -50,7 +50,7 @@ function DownloadButton() {
       <button
         aria-label="download"
         onClick={handleClick}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400 dark:hover:bg-emerald-500"
+        className="inline-flex aspect-square h-10 w-10 items-center justify-center rounded-md bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400 dark:hover:bg-emerald-500"
       >
         <ArrowDownTrayIcon className="h-5 w-5 text-white dark:text-black" />
       </button>

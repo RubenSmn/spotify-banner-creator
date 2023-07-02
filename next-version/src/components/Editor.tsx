@@ -31,7 +31,7 @@ const Editor = () => {
   // }, [displayIcon]);
 
   return (
-    <div className="w-full min-w-[344px]">
+    <div className="w-full min-w-[300px]">
       <BannerContentInput />
       <Tabs value={currentTab} onChange={handleTabChange}>
         <TabList className="mb-4 grid grid-cols-3">
@@ -53,7 +53,7 @@ const Editor = () => {
             );
           })}
         </TabList>
-        {categories.map(([categoryName, values], idx) => {
+        {categories.map(([categoryName, values]) => {
           const { props } = values;
           return (
             <TabContent
@@ -62,7 +62,6 @@ const Editor = () => {
               // className="overflow-scroll"
             >
               {Object.entries(props).map(([propName, prop]) => {
-                // return <p key={propName}>{categoryName}</p>;
                 return (
                   <PropInput
                     key={`pii-${propName}`}

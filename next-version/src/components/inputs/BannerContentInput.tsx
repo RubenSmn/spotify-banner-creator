@@ -19,7 +19,7 @@ const BannerContentInput = () => {
     <div className="space-between mb-4 flex gap-2">
       <Tooltip label="Change between Icon and Text">
         <button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-cyan-600 text-white hover:bg-cyan-700 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-500"
+          className="inline-flex aspect-square h-10 w-10 items-center justify-center rounded-md bg-cyan-600 text-white hover:bg-cyan-700 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-500"
           aria-label="change content type"
           onClick={() => setDisplayIcon((prev: boolean) => !prev)}
         >
@@ -31,7 +31,7 @@ const BannerContentInput = () => {
       <input
         value={bannerName}
         onChange={handleTextChange}
-        className="h-10 flex-1 rounded-md border border-gray-300 bg-transparent px-4 text-black dark:border-gray-600 dark:text-white"
+        className="h-10 w-full flex-1 rounded-md border border-gray-300 bg-transparent px-4 text-black dark:border-gray-600 dark:text-white"
       />
       <DownloadButton />
     </div>
