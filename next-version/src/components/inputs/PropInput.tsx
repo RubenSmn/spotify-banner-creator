@@ -2,7 +2,7 @@ import { PROPTYPES } from "@/interfaces";
 import SliderInput from "./SliderInput";
 import ColorInput from "./ColorInput";
 // import SelectInput from "./SelectInput";
-// import FontInput from "./FontInput";
+import FontInput from "./FontInput";
 
 const PropInput = (props: any) => {
   const { prop, path } = props;
@@ -18,9 +18,9 @@ const PropInput = (props: any) => {
     case PROPTYPES.SLIDER:
       input = <SliderInput prop={prop} path={path} />;
       break;
-    // case PROPTYPES.FONT:
-    //   input = <FontInput prop={prop} path={path} />;
-    //   break;
+    case PROPTYPES.FONT:
+      input = <FontInput prop={prop} path={path} />;
+      break;
   }
 
   return <div className="mb-4 flex flex-col gap-2">{input}</div>;

@@ -15,12 +15,19 @@ const Preview = () => {
   const [bannerIcon] = useBannerIcon();
   const [displayIcon] = useDisplayIcon();
 
+  const textStyle = {
+    ...style.typography,
+    fontFamily: `var(--font-${style.typography.fontFamily
+      .replace(" ", "-")
+      .toLowerCase()})`,
+  };
+
   const bannerContent = displayIcon ? (
     <p style={style.icon}>
       <FontAwesomeIcon icon={`fa-solid fa-${bannerIcon}` as IconProp} />
     </p>
   ) : (
-    <p style={style.typography}>{bannerName}</p>
+    <p style={textStyle}>{bannerName}</p>
   );
 
   return (
