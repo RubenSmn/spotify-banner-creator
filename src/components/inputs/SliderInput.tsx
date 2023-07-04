@@ -67,7 +67,7 @@ const SliderInput: React.FC<Props> = (props) => {
       </Slider>
       <div className="flex justify-between">
         {prop.helpers.map((helper) => {
-          const [key, _] = Object.entries(helper)[0];
+          const key = Object.keys(helper)[0];
           return (
             <div key={`slm-${prop}-${key}`} className="text-sm capitalize">
               {key}
