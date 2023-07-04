@@ -12,6 +12,7 @@ import BannerContentInput from "@/components/inputs/BannerContentInput";
 import { configProps } from "@/constants";
 import PropInput from "./inputs/PropInput";
 import { useDisplayIcon } from "./Provider";
+import { cn } from "@/utils/classnames";
 
 const Editor = () => {
   const categories = Object.entries(configProps);
@@ -42,11 +43,12 @@ const Editor = () => {
               <TabTrigger
                 key={`tlt-${categoryName}`}
                 value={categoryName}
-                className={`border-b-2 px-4 py-2 text-lg ${
-                  currentTab === categoryName
-                    ? "border-green-600 dark:border-green-400"
-                    : "border-gray-300 dark:border-gray-600"
-                }`}
+                className={cn("border-b-2 px-4 py-2 text-lg", {
+                  "border-green-600 dark:border-green-400":
+                    currentTab === categoryName,
+                  "border-gray-300 dark:border-gray-600":
+                    currentTab !== categoryName,
+                })}
               >
                 {displayText}
               </TabTrigger>
