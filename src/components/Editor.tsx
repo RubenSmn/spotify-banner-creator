@@ -1,23 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-  Tabs,
-  TabList,
-  TabTrigger,
-  TabContent,
-  TabIndicator,
-} from "@ark-ui/react";
+import { useState } from "react";
+import { Tabs, TabList, TabTrigger, TabContent } from "@ark-ui/react";
 import BannerContentInput from "@/components/inputs/BannerContentInput";
 import { configProps } from "@/constants";
 import PropInput from "./inputs/PropInput";
 import { cn } from "@/utils/classnames";
-import { useAtomValue } from "jotai";
-import { displayIconAtom } from "./Provider";
 
 const Editor = () => {
   const categories = Object.entries(configProps);
-  const displayIcon = useAtomValue(displayIconAtom);
   const [currentTab, setCurrentTab] = useState(
     Object.keys(configProps)[0] ?? "",
   );
@@ -26,11 +17,6 @@ const Editor = () => {
   const handleTabChange = (details: { value: string | null }) => {
     setCurrentTab(details.value ?? "");
   };
-
-  // useEffect(() => {
-  //   if (displayIcon) return setCurrentTab(tabs["icon"]);
-  //   setCurrentTab(tabs["typography"]);
-  // }, [displayIcon]);
 
   return (
     <div className="w-full min-w-[300px]">
@@ -59,11 +45,7 @@ const Editor = () => {
         {categories.map(([categoryName, values]) => {
           const { props } = values;
           return (
-            <TabContent
-              key={`tpc-${categoryName}`}
-              value={categoryName}
-              // className="overflow-scroll"
-            >
+            <TabContent key={`tpc-${categoryName}`} value={categoryName}>
               {Object.entries(props).map(([propName, prop]) => {
                 return (
                   <PropInput
