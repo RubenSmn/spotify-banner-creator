@@ -3,9 +3,7 @@
 import React from "react";
 import {
   Tooltip as TooltipComponent,
-  TooltipArrow,
   TooltipContent,
-  TooltipInnerArrow,
   TooltipPositioner,
   TooltipTrigger,
 } from "@ark-ui/react";
