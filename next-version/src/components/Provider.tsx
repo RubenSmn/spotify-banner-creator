@@ -2,7 +2,7 @@
 
 import React, { type PropsWithChildren, useState } from "react";
 import { configProps, defaultBannerStyle } from "@/constants";
-import { PROPTYPES } from "@/interfaces";
+import { BannerStyle, PROPTYPES } from "@/interfaces";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -43,8 +43,8 @@ function BannerProvider({ children }: PropsWithChildren) {
    */
   const setPropByPath = (propPath: string, value: string) => {
     if (!value || !propPath) return null;
-    const temp = structuredClone(bannerStyle);
-    propPath.split(".").reduce((acc, curr, i, src) => {
+    const temp: BannerStyle = structuredClone(bannerStyle);
+    propPath.split(".").reduce((acc: any, curr, i, src) => {
       if (i === src.length - 1) {
         acc[src[src.length - 1]] = value;
         return acc[src[src.length - 1]];
