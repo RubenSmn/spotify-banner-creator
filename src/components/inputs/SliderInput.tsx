@@ -43,7 +43,7 @@ const SliderInput: React.FC<Props> = (props) => {
         onReset={handleReset}
       />
       <Slider
-        value={inputValue}
+        value={Number(inputValue)}
         min={prop.min}
         max={prop.max}
         step={prop.step}
