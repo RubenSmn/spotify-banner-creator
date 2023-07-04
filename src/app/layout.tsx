@@ -2,10 +2,11 @@ import type { PropsWithChildren } from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Spotify Banner Creator",
   description: "Tool to create minimalistic Spotify Playlist Banners",
 };

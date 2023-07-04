@@ -1,38 +1,50 @@
-import React, { useState } from 'react';
+"use client";
+
+import React, { useState } from "react";
 import {
-  Box,
-  Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  ModalFooter,
-  Input,
-  Grid,
-  GridItem,
-  useDisclosure,
-  Tooltip,
-} from '@chakra-ui/react';
-import iconList from '../constants/icon-options';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useBannerIcon } from '../Provider';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Portal,
+} from "@ark-ui/react";
+import iconList from "../constants/icon-options";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useBannerIcon } from "@/components/Provider";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { Tooltip } from "./ui/Tooltip";
+
+function useDisclosure(defaultValue = false) {
+  const [isOpen, setIsOpen] = useState(defaultValue);
+
+  function onOpen() {
+    setIsOpen(true);
+  }
+
+  function onClose() {
+    setIsOpen(false);
+  }
+
+  return { isOpen, onOpen, onClose };
+}
 
 const IconModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
   const [filterList, setFilterList] = useState(iconList);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("tesing");
   const [bannerIcon, setBannerIcon] = useBannerIcon();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = event.target.value;
     setValue(userInput);
-    setFilterList(() => {
-      return iconList.filter((iconName) => iconName.indexOf(userInput) > -1);
-    });
+    // setFilterList(() => {
+    //   return iconList.filter((iconName) => iconName.indexOf(userInput) > -1);
+    // });
   };
 
   const handleClick = (icon: string) => {
@@ -42,62 +54,53 @@ const IconModal = () => {
 
   return (
     <>
-      <Input onClick={onOpen} value={bannerIcon} readOnly />
-      <Modal
-        initialFocusRef={initialRef}
-        isOpen={isOpen}
-        onClose={onClose}
-        size="lg"
+      <Dialog
+        // open={isOpen}
+        // onOpen={onOpen}
+        // onClose={onClose}
+        initialFocusEl={initialRef.current}
       >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Search an Icon for your Banner</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <Box mb={4}>
-              <Input
+        <DialogTrigger className="w-full">
+          <input
+            defaultValue={bannerIcon}
+            // onClick={onOpen}
+            readOnly
+            className="h-10 w-full rounded-md border bg-transparent px-4 text-black dark:border-gray-600 dark:text-white"
+          />
+        </DialogTrigger>
+        <Portal>
+          <DialogBackdrop className="fixed bg-gray-700/70" />
+          <DialogContainer className="z-200 fixed left-0 top-0 flex w-full items-center justify-center">
+            <DialogContent className="min-w-[24rem]">
+              <DialogTitle>Search an Icon for your Banner</DialogTitle>
+              <input
                 ref={initialRef}
                 value={value}
                 onChange={handleChange}
                 placeholder="Search"
+                className="mb-4"
               />
-            </Box>
-            <Grid
-              templateColumns="repeat(5, 1fr)"
-              gap={4}
-              overflowY="scroll"
-              height="lg"
-            >
-              {filterList.map((icon) => (
-                <Tooltip
-                  key={`igi-${icon}`}
-                  label={icon.replace(/-/g, ' ')}
-                  textTransform="capitalize"
-                >
-                  <GridItem
-                    height="72px"
-                    width="72px"
-                    bg="cyan.600"
-                    borderRadius={12}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    cursor="pointer"
-                    onClick={() => handleClick(icon)}
-                  >
-                    <FontAwesomeIcon icon={`fa fa-${icon}` as IconProp} />
-                  </GridItem>
-                </Tooltip>
-              ))}
-            </Grid>
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose} colorScheme="gray">
-              Cancel
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+              <div className="grid h-4/5 grid-cols-5 gap-4 overflow-y-scroll">
+                {filterList.map((icon) => (
+                  <Tooltip key={`igi-${icon}`} label={icon.replace(/-/g, " ")}>
+                    <button
+                      className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-md dark:bg-cyan-600"
+                      aria-label={icon}
+                      onClick={() => handleClick(icon)}
+                    >
+                      <FontAwesomeIcon icon={`fa fa-${icon}` as IconProp} />
+                    </button>
+                  </Tooltip>
+                ))}
+              </div>
+              <DialogDescription>Dialog Description</DialogDescription>
+              <DialogCloseTrigger className="flex h-10 w-10 items-center justify-center rounded-md">
+                Cancel
+              </DialogCloseTrigger>
+            </DialogContent>
+          </DialogContainer>
+        </Portal>
+      </Dialog>
     </>
   );
 };
