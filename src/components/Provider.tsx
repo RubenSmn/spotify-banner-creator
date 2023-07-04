@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { configProps, defaultBannerStyle } from './constants';
-import { PROPTYPES } from './interfaces';
+"use client";
 
-interface Props {
-  children: React.ReactNode;
-}
+import React, { type PropsWithChildren, useState } from "react";
+import { configProps, defaultBannerStyle } from "@/constants";
+import { BannerStyle, PROPTYPES } from "@/interfaces";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 
 const getDefaultFromConfig = () => {
   const style: any = {};
@@ -27,10 +29,10 @@ const getDefaultFromConfig = () => {
 
 const BannerContext = React.createContext<any>({});
 
-const BannerProvider: React.FC<Props> = ({ children }) => {
+function BannerProvider({ children }: PropsWithChildren) {
   const [bannerStyle, setBannerStyle] = useState(defaultBannerStyle);
-  const [bannerName, setBannerName] = useState('Funky Finesse');
-  const [bannerIcon, setBannerIcon] = useState('code');
+  const [bannerName, setBannerName] = useState("Funky Finesse");
+  const [bannerIcon, setBannerIcon] = useState("code");
   const [displayIcon, setDisplayIcon] = useState(false);
 
   /**
@@ -40,10 +42,10 @@ const BannerProvider: React.FC<Props> = ({ children }) => {
    * setPropByPath('banner.backgroundColor', '#ff7')
    */
   const setPropByPath = (propPath: string, value: string) => {
-    if (value === null || value === undefined || !propPath) return null;
-    const temp = { ...bannerStyle };
-    propPath.split('.').reduce((acc: any, curr: any, _: any, src: any) => {
-      if (curr === src[src.length - 1]) {
+    if (!value || !propPath) return null;
+    const temp: BannerStyle = structuredClone(bannerStyle);
+    propPath.split(".").reduce((acc: any, curr, i, src) => {
+      if (i === src.length - 1) {
         acc[src[src.length - 1]] = value;
         return acc[src[src.length - 1]];
       }
@@ -63,7 +65,7 @@ const BannerProvider: React.FC<Props> = ({ children }) => {
   const getPropByPath = (propPath: string) => {
     if (!propPath) return null;
     return propPath
-      .split('.')
+      .split(".")
       .reduce((acc: any, curr) => acc[curr], bannerStyle);
   };
 
@@ -85,7 +87,7 @@ const BannerProvider: React.FC<Props> = ({ children }) => {
       {children}
     </BannerContext.Provider>
   );
-};
+}
 
 export default BannerProvider;
 

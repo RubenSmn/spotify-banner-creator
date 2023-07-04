@@ -31,11 +31,11 @@ export interface BannerStyle {
 }
 
 export enum PROPTYPES {
-  COLOR = 'color',
-  SELECT = 'select',
-  SLIDER = 'slider',
-  FONT = 'font',
-  ICON = 'icon',
+  COLOR = "color",
+  SELECT = "select",
+  SLIDER = "slider",
+  FONT = "font",
+  ICON = "icon",
 }
 
 export interface StyleProp {

@@ -1,9 +1,8 @@
-import { Box } from '@chakra-ui/react';
-import { PROPTYPES } from './interfaces';
-import SliderInput from './components/SliderInput';
-import ColorInput from './components/ColorInput';
-import SelectInput from './components/SelectInput';
-import FontInput from './components/FontInput';
+import { PROPTYPES } from "@/interfaces";
+import SliderInput from "./SliderInput";
+import ColorInput from "./ColorInput";
+import SelectInput from "./SelectInput";
+import FontInput from "./FontInput";
 
 const PropInput = (props: any) => {
   const { prop, path } = props;
@@ -24,7 +23,7 @@ const PropInput = (props: any) => {
       break;
   }
 
-  return <Box mb={4}>{input}</Box>;
+  return <div className="mb-4 flex flex-col gap-2">{input}</div>;
 };
 
 export default PropInput;

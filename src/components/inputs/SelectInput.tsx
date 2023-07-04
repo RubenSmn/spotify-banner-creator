@@ -1,8 +1,8 @@
-import React from 'react';
-import { StylePropSelect } from '../interfaces';
-import { useStyleUtils } from '../Provider';
-import InputHeader from './InputHeader';
-import CustomRadioGroup from './CustomRadioGroup';
+import React from "react";
+import { StylePropSelect } from "@/interfaces";
+import { useStyleUtils } from "../Provider";
+import InputHeader from "./InputHeader";
+import CustomRadioGroup from "./CustomRadioGroup";
 
 interface Props {
   prop: StylePropSelect;

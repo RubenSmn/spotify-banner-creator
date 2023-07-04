@@ -1,8 +1,10 @@
-import React from 'react';
-import ColorPicker from 'react-best-gradient-color-picker';
-import { StyleProp } from '../interfaces';
-import { useStyleUtils } from '../Provider';
-import InputHeader from './InputHeader';
+"use client";
+
+import React, { useCallback } from "react";
+import ColorPicker from "react-best-gradient-color-picker";
+import { StyleProp } from "@/interfaces";
+import { useStyleUtils } from "@/components/Provider";
+import InputHeader from "./InputHeader";
 
 interface Props {
   prop: StyleProp;
@@ -22,9 +24,9 @@ const ColorInput: React.FC<Props> = (props) => {
     setPropByPath(path, value);
   };
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setPropByPath(path, prop.defaultValue);
-  };
+  }, [setPropByPath]);
 
   return (
     <>
