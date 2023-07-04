@@ -32,6 +32,7 @@ const BannerContentInput = () => {
         value={bannerName}
         onChange={handleTextChange}
         className="h-10 w-full flex-1 rounded-md border border-gray-300 bg-transparent px-4 text-black dark:border-gray-600 dark:text-white"
+        aria-label="banner text"
       />
       <DownloadButton />
     </div>
