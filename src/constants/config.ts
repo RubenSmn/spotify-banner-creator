@@ -2,7 +2,7 @@ import { ConfigProps, PROPTYPES } from "../interfaces";
 
 export const configProps: ConfigProps = {
   typography: {
-    displayText: "Text Style",
+    displayText: "Text",
     props: {
       fontFamily: {
         displayText: "Font",
@@ -87,7 +87,7 @@ export const configProps: ConfigProps = {
     },
   },
   icon: {
-    displayText: "Icon Style",
+    displayText: "Icon",
     props: {
       fontSize: {
         displayText: "Size",
@@ -107,7 +107,7 @@ export const configProps: ConfigProps = {
     },
   },
   banner: {
-    displayText: "Banner Style",
+    displayText: "Banner",
     props: {
       background: {
         displayText: "Background Color",
