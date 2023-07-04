@@ -1,7 +1,7 @@
 "use client";
 
 import { StylePropFont } from "@/interfaces";
-import { useStyleUtils } from "../Provider";
+import { useGetPropByPath, useSetPropByPath } from "../Provider";
 import InputHeader from "./InputHeader";
 import { cn } from "@/utils/classnames";
 
@@ -11,7 +11,8 @@ type FontInputProps = {
 };
 
 function FontInput({ prop, path }: FontInputProps) {
-  const { getPropByPath, setPropByPath } = useStyleUtils();
+  const getPropByPath = useGetPropByPath();
+  const setPropByPath = useSetPropByPath();
   const currentValue = getPropByPath(path);
   const isChanged = String(currentValue) !== String(prop.defaultValue);
 

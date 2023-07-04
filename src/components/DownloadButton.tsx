@@ -1,18 +1,16 @@
 "use client";
 
 import html2canvas from "html2canvas";
-import {
-  useBannerName,
-  useBannerIcon,
-  useDisplayIcon,
-} from "@/components/Provider";
+import { displayIconAtom, bannerNameAtom } from "@/components/Provider";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 import { Tooltip } from "./ui/Tooltip";
+import { useAtomValue } from "jotai";
+import { bannerIconAtom } from "@/components/Provider";
 
 function DownloadButton() {
-  const [bannerName] = useBannerName();
-  const [bannerIcon] = useBannerIcon();
-  const [displayIcon] = useDisplayIcon();
+  const bannerName = useAtomValue(bannerNameAtom);
+  const bannerIcon = useAtomValue(bannerIconAtom);
+  const displayIcon = useAtomValue(displayIconAtom);
 
   const handleClick = () => {
     const captureObject = document.getElementById("banner-capture")!;

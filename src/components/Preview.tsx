@@ -3,24 +3,26 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  useBannerName,
-  useBannerIcon,
-  useBannerStyle,
-  useDisplayIcon,
+  displayIconAtom,
+  bannerNameAtom,
+  bannerIconAtom,
+  bannerStyleAtom,
 } from "./Provider";
+import { useAtomValue } from "jotai";
+import React from "react";
 
 const Preview = () => {
-  const [style] = useBannerStyle();
-  const [bannerName] = useBannerName();
-  const [bannerIcon] = useBannerIcon();
-  const [displayIcon] = useDisplayIcon();
+  const style = useAtomValue(bannerStyleAtom);
+  const bannerName = useAtomValue(bannerNameAtom);
+  const bannerIcon = useAtomValue(bannerIconAtom);
+  const displayIcon = useAtomValue(displayIconAtom);
 
   const textStyle = {
     ...style.typography,
     fontFamily: `var(--font-${style.typography.fontFamily
       .replace(" ", "-")
       .toLowerCase()})`,
-  };
+  } as React.CSSProperties;
 
   const bannerContent = displayIcon ? (
     <p style={style.icon}>

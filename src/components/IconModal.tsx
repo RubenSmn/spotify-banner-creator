@@ -14,9 +14,10 @@ import {
 } from "@ark-ui/react";
 import iconList from "../constants/icon-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useBannerIcon } from "@/components/Provider";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Tooltip } from "./ui/Tooltip";
+import { useAtom } from "jotai";
+import { bannerIconAtom } from "./Provider";
 
 function useDisclosure(defaultValue = false) {
   const [isOpen, setIsOpen] = useState(defaultValue);
@@ -37,7 +38,7 @@ const IconModal = () => {
   const initialRef = React.useRef(null);
   const [filterList, setFilterList] = useState(iconList);
   const [value, setValue] = useState("tesing");
-  const [bannerIcon, setBannerIcon] = useBannerIcon();
+  const [bannerIcon, setBannerIcon] = useAtom(bannerIconAtom);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = event.target.value;
