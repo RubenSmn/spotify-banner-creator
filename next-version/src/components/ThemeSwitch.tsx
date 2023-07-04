@@ -1,6 +1,7 @@
 "use client";
+
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function getInitialTheme(): ThemeType {
   const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
@@ -15,15 +16,30 @@ function getInitialTheme(): ThemeType {
 type ThemeType = "light" | "dark";
 
 function rawSetTheme(newTheme: ThemeType) {
-  const root = window.document.documentElement;
+  const root = document.documentElement;
   const isDark = newTheme === "dark";
 
   root.classList.remove(isDark ? "light" : "dark");
   root.classList.add(newTheme);
 }
 
+function useTheme(
+  defaultTheme: ThemeType,
+): [
+  theme: ThemeType,
+  setTheme: React.Dispatch<React.SetStateAction<ThemeType>>,
+] {
+  const [theme, setTheme] = useState(defaultTheme);
+
+  useEffect(() => {
+    setTheme(getInitialTheme());
+  }, []);
+
+  return [theme, setTheme];
+}
+
 export function ThemeSwitch() {
-  const [theme, setTheme] = useState<ThemeType>(getInitialTheme());
+  const [theme, setTheme] = useTheme("dark");
 
   function toggleTheme() {
     setTheme((prevTheme) => {
