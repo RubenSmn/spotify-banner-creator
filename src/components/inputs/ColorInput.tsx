@@ -3,7 +3,7 @@
 import React, { useCallback } from "react";
 import ColorPicker from "react-best-gradient-color-picker";
 import { StyleProp } from "@/interfaces";
-import { useStyleUtils } from "@/components/Provider";
+import { useGetPropByPath, useSetPropByPath } from "@/components/Provider";
 import InputHeader from "./InputHeader";
 
 interface Props {
@@ -13,7 +13,8 @@ interface Props {
 
 const ColorInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
-  const { getPropByPath, setPropByPath } = useStyleUtils();
+  const getPropByPath = useGetPropByPath();
+  const setPropByPath = useSetPropByPath();
   const inputValue = getPropByPath(path);
   const isChanged = String(inputValue) !== String(prop.defaultValue);
 

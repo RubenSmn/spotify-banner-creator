@@ -10,7 +10,7 @@ import {
   SliderTrack,
 } from "@ark-ui/react";
 import { StylePropSlider } from "@/interfaces";
-import { useStyleUtils } from "../Provider";
+import { useGetPropByPath, useSetPropByPath } from "../Provider";
 import InputHeader from "./InputHeader";
 
 interface Props {
@@ -20,7 +20,8 @@ interface Props {
 
 const SliderInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
-  const { getPropByPath, setPropByPath } = useStyleUtils();
+  const getPropByPath = useGetPropByPath();
+  const setPropByPath = useSetPropByPath();
   const inputValue = getPropByPath(path).replace(prop.unit, "");
   const isChanged = String(inputValue) !== String(prop.defaultValue);
 

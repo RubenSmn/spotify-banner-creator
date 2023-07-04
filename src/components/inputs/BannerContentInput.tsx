@@ -2,13 +2,14 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DownloadButton from "../DownloadButton";
-import { useBannerName, useDisplayIcon } from "@/components/Provider";
+import { bannerNameAtom, displayIconAtom } from "@/components/Provider";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Tooltip } from "@/components/ui/Tooltip";
+import { useAtom } from "jotai";
 
 const BannerContentInput = () => {
-  const [bannerName, setBannerName] = useBannerName();
-  const [displayIcon, setDisplayIcon] = useDisplayIcon();
+  const [bannerName, setBannerName] = useAtom(bannerNameAtom);
+  const [displayIcon, setDisplayIcon] = useAtom(displayIconAtom);
 
   const handleTextChange = (e: any) => {
     const userInput = e.target.value;

@@ -1,6 +1,6 @@
 import React from "react";
 import { StylePropSelect } from "@/interfaces";
-import { useStyleUtils } from "../Provider";
+import { useGetPropByPath, useSetPropByPath } from "../Provider";
 import InputHeader from "./InputHeader";
 import CustomRadioGroup from "./CustomRadioGroup";
 
@@ -11,7 +11,8 @@ interface Props {
 
 const SelectInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
-  const { setPropByPath, getPropByPath } = useStyleUtils();
+  const getPropByPath = useGetPropByPath();
+  const setPropByPath = useSetPropByPath();
   const inputValue = getPropByPath(path);
   const isChanged =
     String(inputValue) !== String(prop.options[prop.defaultValue]);

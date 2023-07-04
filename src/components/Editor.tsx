@@ -11,12 +11,13 @@ import {
 import BannerContentInput from "@/components/inputs/BannerContentInput";
 import { configProps } from "@/constants";
 import PropInput from "./inputs/PropInput";
-import { useDisplayIcon } from "./Provider";
 import { cn } from "@/utils/classnames";
+import { useAtomValue } from "jotai";
+import { displayIconAtom } from "./Provider";
 
 const Editor = () => {
   const categories = Object.entries(configProps);
-  const [displayIcon] = useDisplayIcon();
+  const displayIcon = useAtomValue(displayIconAtom);
   const [currentTab, setCurrentTab] = useState(
     Object.keys(configProps)[0] ?? "",
   );
