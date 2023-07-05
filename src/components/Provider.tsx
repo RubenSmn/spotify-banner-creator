@@ -66,7 +66,7 @@ function SetupBannerStyleFromURL() {
     if (searchParams.keys.length === 0) return;
     const bannerStyleFromURL = searchParamsToBannerStyle(searchParams);
     setBannerStyle(bannerStyleFromURL);
-  }, []);
+  }, [searchParams]);
 
   return null;
 }
