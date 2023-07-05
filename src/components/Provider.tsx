@@ -63,6 +63,7 @@ function SetupBannerStyleFromURL() {
   const setBannerStyle = useSetAtom(bannerStyleAtom);
 
   useEffect(() => {
+    if (searchParams.keys.length === 0) return;
     const bannerStyleFromURL = searchParamsToBannerStyle(searchParams);
     setBannerStyle(bannerStyleFromURL);
   }, []);
