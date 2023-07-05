@@ -11,8 +11,6 @@ import {
   ZCOOL_KuaiLe,
 } from "next/font/google";
 
-// https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Cookie&family=Finlandica:wght@400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&family=ZCOOL+KuaiLe&family=Lobster&display=swap
-
 const arima = Arima({
   subsets: ["latin"],
   variable: "--font-arima",
