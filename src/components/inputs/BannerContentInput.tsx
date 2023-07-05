@@ -6,6 +6,7 @@ import { bannerNameAtom, displayIconAtom } from "@/components/Provider";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { useAtom } from "jotai";
+import ShareButton from "../ShareButton";
 
 const BannerContentInput = () => {
   const [bannerName, setBannerName] = useAtom(bannerNameAtom);
@@ -35,6 +36,7 @@ const BannerContentInput = () => {
         className="h-10 w-full flex-1 rounded-md border border-gray-300 bg-transparent px-4 text-black dark:border-gray-600 dark:text-white"
         aria-label="banner text"
       />
+      <ShareButton />
       <DownloadButton />
     </div>
   );

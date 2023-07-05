@@ -1,12 +1,13 @@
 "use client";
 
-import React, { type PropsWithChildren } from "react";
+import { useEffect, type PropsWithChildren } from "react";
 import { defaultBannerStyle } from "@/constants";
-import { BannerStyle } from "@/interfaces";
+import type { BannerStyle } from "@/interfaces";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { Provider, atom, useAtom, useAtomValue } from "jotai";
+import { Provider, atom, useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useSearchParams } from "next/navigation";
 library.add(fas);
 
 export const bannerStyleAtom = atom<BannerStyle>(defaultBannerStyle);
@@ -41,8 +42,41 @@ export const useSetPropByPath = () => {
   };
 };
 
+function searchParamsToBannerStyle(
+  queryParams: ReturnType<typeof useSearchParams>,
+) {
+  const obj = Object.fromEntries(queryParams);
+
+  return Object.entries(obj).reduce((acc, curr) => {
+    const [section, property] = curr[0].split("-");
+
+    if (!(section in acc)) acc[section] = {};
+    acc[section] = { ...acc[section], [property]: curr[1] };
+
+    return acc;
+    // Todo: add proper type
+  }, {} as any);
+}
+
+function SetupBannerStyleFromURL() {
+  const searchParams = useSearchParams();
+  const setBannerStyle = useSetAtom(bannerStyleAtom);
+
+  useEffect(() => {
+    const bannerStyleFromURL = searchParamsToBannerStyle(searchParams);
+    setBannerStyle(bannerStyleFromURL);
+  }, []);
+
+  return null;
+}
+
 function BannerProvider({ children }: PropsWithChildren) {
-  return <Provider>{children}</Provider>;
+  return (
+    <Provider>
+      <SetupBannerStyleFromURL />
+      {children}
+    </Provider>
+  );
 }
 
 export default BannerProvider;
