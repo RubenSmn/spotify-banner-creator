@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <BannerProvider>
       <main
-        className={`grid flex-1 grid-cols-1 gap-4 px-4 text-black dark:text-white md:grid-cols-2 ${fonts}`}
+        className={`mx-auto grid max-w-screen-lg flex-1 grid-cols-1 gap-8 px-4 text-black dark:text-white md:grid-cols-2 md:gap-4 ${fonts}`}
       >
         <Preview />
         <Editor />
