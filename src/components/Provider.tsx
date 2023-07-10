@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, type PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import { defaultBannerStyle } from "@/constants";
 import type { BannerStyle } from "@/interfaces";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { Provider, atom, useAtom, useAtomValue, useSetAtom } from "jotai";
-import { useSearchParams } from "next/navigation";
+import { Provider, atom, useAtom, useAtomValue } from "jotai";
+import { useHydrateAtoms } from "jotai/utils";
 library.add(fas);
 
 export const bannerStyleAtom = atom<BannerStyle>(defaultBannerStyle);
@@ -42,39 +42,26 @@ export const useSetPropByPath = () => {
   };
 };
 
-function searchParamsToBannerStyle(
-  queryParams: ReturnType<typeof useSearchParams>,
-) {
-  const obj = Object.fromEntries(queryParams);
+function SetupBannerStyleFromSlug({ slug }: { slug: string[] }) {
+  try {
+    const decodedURI = decodeURIComponent(slug[0]);
+    const decodedString = atob(decodedURI);
+    const style = JSON.parse(decodedString);
 
-  return Object.entries(obj).reduce((acc, curr) => {
-    const [section, property] = curr[0].split("-");
-
-    if (!(section in acc)) acc[section] = {};
-    acc[section] = { ...acc[section], [property]: curr[1] };
-
-    return acc;
-    // Todo: add proper type
-  }, {} as any);
+    useHydrateAtoms([[bannerStyleAtom, style]]);
+  } finally {
+    return null;
+  }
 }
 
-function SetupBannerStyleFromURL() {
-  const searchParams = useSearchParams();
-  const setBannerStyle = useSetAtom(bannerStyleAtom);
+type BannerProviderProps = {
+  slug: string[];
+} & PropsWithChildren;
 
-  useEffect(() => {
-    if (!location.search) return;
-    const bannerStyleFromURL = searchParamsToBannerStyle(searchParams);
-    setBannerStyle(bannerStyleFromURL);
-  }, []);
-
-  return null;
-}
-
-function BannerProvider({ children }: PropsWithChildren) {
+function BannerProvider({ slug, children }: BannerProviderProps) {
   return (
     <Provider>
-      <SetupBannerStyleFromURL />
+      <SetupBannerStyleFromSlug slug={slug} />
       {children}
     </Provider>
   );
