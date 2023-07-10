@@ -30,3 +30,5 @@ export const defaultBannerStyle: BannerStyle = {
       ],
   },
 };
+
+export const defaultBannerName = "Funky Finesse";

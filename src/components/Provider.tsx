@@ -8,10 +8,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Provider, atom, useAtom, useAtomValue } from "jotai";
 import { useHydrateAtoms } from "jotai/utils";
+import { defaultBannerName } from "@/constants/default-style";
 library.add(fas);
 
 export const bannerStyleAtom = atom<BannerStyle>(defaultBannerStyle);
-export const bannerNameAtom = atom("Funky Finesse");
+export const bannerNameAtom = atom(defaultBannerName);
 export const bannerIconAtom = atom("code");
 export const displayIconAtom = atom(false);
 
@@ -43,18 +44,21 @@ export const useSetPropByPath = () => {
 };
 
 function SetupBannerStyleFromSlug({ slug }: { slug: string[] }) {
+  let style = {
+    bannerStyle: defaultBannerStyle,
+    bannerName: defaultBannerName,
+  };
   try {
     const decodedURI = decodeURIComponent(slug[0]);
     const decodedString = atob(decodedURI);
-    const style = JSON.parse(decodedString);
+    style = JSON.parse(decodedString);
+  } catch {}
+  const { bannerStyle, bannerName } = style;
 
-    const { bannerStyle, bannerName } = style;
+  useHydrateAtoms([[bannerStyleAtom, bannerStyle]]);
+  useHydrateAtoms([[bannerNameAtom, bannerName]]);
 
-    useHydrateAtoms([[bannerStyleAtom, bannerStyle]]);
-    useHydrateAtoms([[bannerNameAtom, bannerName]]);
-  } finally {
-    return null;
-  }
+  return null;
 }
 
 type BannerProviderProps = {
