@@ -43,13 +43,13 @@ export const useSetPropByPath = () => {
   };
 };
 
-function SetupBannerStyleFromSlug({ slug }: { slug: string[] }) {
+function SetupBannerStyleFromSlug({ slug }: { slug: string }) {
   let style = {
     bannerStyle: defaultBannerStyle,
     bannerName: defaultBannerName,
   };
   try {
-    const decodedURI = decodeURIComponent(slug[0]);
+    const decodedURI = decodeURIComponent(slug);
     const decodedString = atob(decodedURI);
     style = JSON.parse(decodedString);
   } catch {}
@@ -62,7 +62,7 @@ function SetupBannerStyleFromSlug({ slug }: { slug: string[] }) {
 }
 
 type BannerProviderProps = {
-  slug: string[];
+  slug: string;
 } & PropsWithChildren;
 
 function BannerProvider({ slug, children }: BannerProviderProps) {
