@@ -1,19 +1,26 @@
 "use client";
 
 import { CheckIcon, ShareIcon } from "@heroicons/react/24/solid";
-import { bannerStyleAtom } from "./Provider";
+import { bannerNameAtom, bannerStyleAtom } from "./Provider";
 import { useAtomValueManually } from "@/hooks/useAtomValueManually";
 import { useCallback } from "react";
 import { useClipboard } from "@/hooks/useClipboard";
 
 function ShareButton() {
   const getBannerStyle = useAtomValueManually(bannerStyleAtom);
+  const getBannerName = useAtomValueManually(bannerNameAtom);
   const { hasCopied, copy } = useClipboard("");
 
   const handleClick = useCallback(() => {
     const bannerStyle = getBannerStyle();
+    const bannerName = getBannerName();
 
-    const json = JSON.stringify(bannerStyle);
+    const banner = {
+      bannerStyle: bannerStyle,
+      bannerName: bannerName,
+    };
+
+    const json = JSON.stringify(banner);
     const encoded = btoa(json);
 
     const url = `${window.location.origin}/${encoded}`;

@@ -48,7 +48,10 @@ function SetupBannerStyleFromSlug({ slug }: { slug: string[] }) {
     const decodedString = atob(decodedURI);
     const style = JSON.parse(decodedString);
 
-    useHydrateAtoms([[bannerStyleAtom, style]]);
+    const { bannerStyle, bannerName } = style;
+
+    useHydrateAtoms([[bannerStyleAtom, bannerStyle]]);
+    useHydrateAtoms([[bannerNameAtom, bannerName]]);
   } finally {
     return null;
   }
