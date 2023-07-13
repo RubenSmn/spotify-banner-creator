@@ -1,4 +1,4 @@
 import { configProps } from "./config";
-import { defaultBannerStyle } from "./default-style";
+import { defaultBannerStyle, defaultBannerName } from "./default-style";
 
-export { configProps, defaultBannerStyle };
+export { configProps, defaultBannerStyle, defaultBannerName };
