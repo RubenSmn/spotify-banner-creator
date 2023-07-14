@@ -12,7 +12,7 @@ const BannerContentInput = () => {
   const [bannerName, setBannerName] = useAtom(bannerNameAtom);
   const [displayIcon, setDisplayIcon] = useAtom(displayIconAtom);
 
-  const handleTextChange = (e: any) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = e.target.value;
     setBannerName(userInput);
   };
