@@ -17,8 +17,8 @@ const SelectInput: React.FC<Props> = (props) => {
   const isChanged =
     String(inputValue) !== String(prop.options[prop.defaultValue]);
 
-  const handleChange = (userInput: string) => {
-    setPropByPath(path, userInput);
+  const handleChange = (optionName: string) => {
+    setPropByPath(path, prop.options[optionName]);
   };
 
   const handleReset = () => {
