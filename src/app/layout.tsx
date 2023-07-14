@@ -59,6 +59,24 @@ const editorFonts = `${arima.variable} ${cookie.variable} ${finlandica.variable}
 export const metadata: Metadata = {
   title: "Spotify Banner Creator",
   description: "Tool to create minimalistic Spotify Playlist Banners",
+  keywords: [
+    "create spotify playlist banner",
+    "create spotify playlist cover",
+    "spotify playlist banner",
+    "playlist cover maker",
+    "minimalistic playlist art",
+    "spotify banner generator",
+    "custom playlist banners",
+    "creative spotify covers",
+    "design your own spotify banners",
+    "customizable playlist covers",
+    "spotify playlist branding",
+    "minimalist music banners",
+    "playlist thumbnail creator",
+    "custom playlist graphics",
+    "spotify playlist branding tool",
+    "unique playlist banners",
+  ],
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
