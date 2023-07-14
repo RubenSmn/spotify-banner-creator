@@ -37,7 +37,7 @@ const Editor = () => {
                     currentTab !== categoryName,
                 })}
               >
-                {displayText}
+                <h2>{displayText}</h2>
               </TabTrigger>
             );
           })}

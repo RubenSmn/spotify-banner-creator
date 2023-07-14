@@ -17,7 +17,7 @@ const InputHeader: React.FC<Props> = (props) => {
   return (
     <div className="flex h-6 items-center justify-between">
       <div className="inline-flex gap-2">
-        <p>{title}</p>
+        <h3>{title}</h3>
         {info && (
           <Tooltip label={info}>
             <InformationCircleIcon height={24} width={24} />
