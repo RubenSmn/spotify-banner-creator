@@ -3,8 +3,6 @@ import { defaultBannerName, defaultBannerStyle } from "@/constants";
 import { IconType } from "react-icons";
 import { convertToFaIconName } from "@/utils/icon";
 
-// export const runtime = "edge";
-
 const defaultStyle = {
   bannerStyle: defaultBannerStyle,
   bannerName: defaultBannerName,
