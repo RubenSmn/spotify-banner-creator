@@ -47,16 +47,20 @@ function SetupBannerStyleFromSlug({ slug }: { slug: string }) {
   let style = {
     bannerStyle: defaultBannerStyle,
     bannerName: defaultBannerName,
+    bannerIcon: "code",
+    displayIcon: false,
   };
   try {
     const decodedURI = decodeURIComponent(slug);
     const decodedString = atob(decodedURI);
     style = JSON.parse(decodedString);
   } catch {}
-  const { bannerStyle, bannerName } = style;
+  const { bannerStyle, bannerName, bannerIcon, displayIcon } = style;
 
   useHydrateAtoms([[bannerStyleAtom, bannerStyle]]);
   useHydrateAtoms([[bannerNameAtom, bannerName]]);
+  useHydrateAtoms([[bannerIconAtom, bannerIcon]]);
+  useHydrateAtoms([[displayIconAtom, displayIcon]]);
 
   return null;
 }
