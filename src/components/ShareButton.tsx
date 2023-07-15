@@ -38,7 +38,7 @@ function ShareButton() {
     const url = `${window.location.origin}/${encoded}`;
 
     copy(url);
-  }, []);
+  }, [copy, getBannerIcon, getBannerName, getBannerStyle, getDisplayIcon]);
 
   return (
     <button
