@@ -4,12 +4,9 @@ import { type PropsWithChildren } from "react";
 import { defaultBannerStyle } from "@/constants";
 import type { BannerStyle } from "@/interfaces";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Provider, atom, useAtom, useAtomValue } from "jotai";
 import { useHydrateAtoms } from "jotai/utils";
 import { defaultBannerName } from "@/constants/default-style";
-library.add(fas);
 
 export const bannerStyleAtom = atom<BannerStyle>(defaultBannerStyle);
 export const bannerNameAtom = atom(defaultBannerName);
