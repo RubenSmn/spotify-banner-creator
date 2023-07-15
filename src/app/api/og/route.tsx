@@ -31,7 +31,9 @@ export async function GET(request: Request) {
 
     if (displayIcon) {
       const modifiedIconName = convertToFaIconName(bannerIcon);
-      const icons = await import("react-icons/fa");
+      const icons = await import(
+        `@react-icons/all-files/fa/${modifiedIconName}`
+      );
       Icon = icons[modifiedIconName] as IconType;
     }
 
