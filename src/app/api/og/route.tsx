@@ -1,14 +1,18 @@
 import { ImageResponse } from "next/server";
 import { defaultBannerName, defaultBannerStyle } from "@/constants";
+import { IconType } from "react-icons";
+import { convertToFaIconName } from "@/utils/icon";
 
 export const runtime = "edge";
 
 const defaultStyle = {
   bannerStyle: defaultBannerStyle,
   bannerName: defaultBannerName,
+  bannerIcon: "code",
+  displayIcon: false,
 };
 
-export function GET(request: Request) {
+export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
 
@@ -21,7 +25,13 @@ export function GET(request: Request) {
       style = JSON.parse(decodedString);
     }
 
-    const { bannerStyle, bannerName } = style;
+    const { bannerStyle, bannerName, bannerIcon, displayIcon } = style;
+
+    const modifiedIconName = convertToFaIconName(bannerIcon);
+
+    const Icon = (await import("react-icons/fa").then(
+      (icons) => icons[modifiedIconName],
+    )) as IconType;
 
     return new ImageResponse(
       (
@@ -33,17 +43,28 @@ export function GET(request: Request) {
             display: "flex",
           }}
         >
-          <p
-            style={
-              {
-                ...bannerStyle.typography,
-                marginLeft: "50%",
-                transform: "translateX(-50%)",
-              } as React.CSSProperties
-            }
-          >
-            {bannerName}
-          </p>
+          {displayIcon ? (
+            <div
+              style={{
+                ...bannerStyle.icon,
+                display: "flex",
+              }}
+            >
+              <Icon />
+            </div>
+          ) : (
+            <p
+              style={
+                {
+                  ...bannerStyle.typography,
+                  marginLeft: "50%",
+                  transform: "translateX(-50%)",
+                } as React.CSSProperties
+              }
+            >
+              {bannerName}
+            </p>
+          )}
         </div>
       ),
       {

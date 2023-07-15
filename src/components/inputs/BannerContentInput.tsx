@@ -1,13 +1,11 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DownloadButton from "../DownloadButton";
 import {
   bannerIconAtom,
   bannerNameAtom,
   displayIconAtom,
 } from "@/components/Provider";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { useAtom } from "jotai";
 import ShareButton from "../ShareButton";
@@ -26,6 +24,7 @@ import { useMemo, useState } from "react";
 import iconList from "@/constants/icon-options";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { cn } from "@/utils/classnames";
+import Icon from "../Icon";
 
 const comboboxData: Pick<ComboboxOptionProps, "label" | "value">[] =
   iconList.map((icon) => ({
@@ -66,9 +65,7 @@ const BannerContentInput = () => {
           aria-label="change content type"
           onClick={() => setDisplayIcon((prev: boolean) => !prev)}
         >
-          <FontAwesomeIcon
-            icon={(displayIcon ? "fa-icons" : "fa-font") as IconProp}
-          />
+          <Icon icon={displayIcon ? "icons" : "font"} />
         </button>
       </Tooltip>
       {displayIcon ? (
@@ -110,8 +107,8 @@ const BannerContentInput = () => {
                             "bg-slate-300 dark:bg-slate-600",
                         )}
                       >
-                        <FontAwesomeIcon
-                          icon={`fa fa-${item.value}` as IconProp}
+                        <Icon
+                          icon={item.value}
                           className="aspect-square h-6 w-6"
                         />
                         {item.label}

@@ -1,7 +1,5 @@
 "use client";
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   displayIconAtom,
   bannerNameAtom,
@@ -10,6 +8,7 @@ import {
 } from "./Provider";
 import { useAtomValue } from "jotai";
 import React from "react";
+import Icon from "./Icon";
 
 const Preview = () => {
   const style = useAtomValue(bannerStyleAtom);
@@ -26,7 +25,7 @@ const Preview = () => {
 
   const bannerContent = displayIcon ? (
     <p style={style.icon}>
-      <FontAwesomeIcon icon={`fa-solid fa-${bannerIcon}` as IconProp} />
+      <Icon icon={bannerIcon} />
     </p>
   ) : (
     <p style={textStyle}>{bannerName}</p>
