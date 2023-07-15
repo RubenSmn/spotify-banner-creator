@@ -27,11 +27,13 @@ export async function GET(request: Request) {
 
     const { bannerStyle, bannerName, bannerIcon, displayIcon } = style;
 
-    const modifiedIconName = convertToFaIconName(bannerIcon);
+    let Icon: IconType | undefined = undefined;
 
-    const Icon = (await import("react-icons/fa").then(
-      (icons) => icons[modifiedIconName],
-    )) as IconType;
+    if (displayIcon) {
+      const modifiedIconName = convertToFaIconName(bannerIcon);
+      const icons = await import("react-icons/fa");
+      Icon = icons[modifiedIconName] as IconType;
+    }
 
     return new ImageResponse(
       (
@@ -43,7 +45,7 @@ export async function GET(request: Request) {
             display: "flex",
           }}
         >
-          {displayIcon ? (
+          {displayIcon && Icon ? (
             <div
               style={{
                 ...bannerStyle.icon,
