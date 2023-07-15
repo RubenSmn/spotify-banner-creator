@@ -1,7 +1,7 @@
 import BannerProvider from "@/components/Provider";
 import Preview from "@/components/Preview";
 import Editor from "@/components/Editor";
-import { Metadata } from "next";
+import { defaultMetadata } from "@/constants/metadata";
 
 type PageProps = {
   params: {
@@ -10,17 +10,19 @@ type PageProps = {
 };
 
 export async function generateMetadata({
-  params,
+  params: { slug },
 }: {
   params: { slug: string };
 }) {
-  return {
-    openGraph: {
-      title: "My Spotify Banner",
-      description: "I made this using the Spotify Banner Creator",
-      images: [`/api/og?q=${params.slug}`],
-    },
-  } as Metadata;
+  return slug !== undefined
+    ? {
+        openGraph: {
+          title: "Spotify Banner",
+          description: "I made this using the Spotify Banner Creator",
+          images: [`/api/og?q=${slug}`],
+        },
+      }
+    : { ...defaultMetadata };
 }
 
 export default function Home({ params }: PageProps) {

@@ -12,6 +12,7 @@ import {
   Roboto,
   ZCOOL_KuaiLe,
 } from "next/font/google";
+import { defaultMetadata } from "@/constants/metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,8 +58,7 @@ const lobster = Lobster({
 const editorFonts = `${arima.variable} ${cookie.variable} ${finlandica.variable} ${oswald.variable} ${roboto.variable} ${zcool_kuaile.variable} ${lobster.variable}`;
 
 export const metadata: Metadata = {
-  title: "Spotify Banner Creator",
-  description: "Tool to create minimalistic Spotify Playlist Banners",
+  ...defaultMetadata,
   keywords: [
     "create spotify playlist banner",
     "create spotify playlist cover",
