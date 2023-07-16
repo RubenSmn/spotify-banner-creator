@@ -38,6 +38,7 @@ const allSolidList = [
   "bone",
   "bong",
   "book",
+  "bookmark",
   "book-reader",
   "brain",
   "bread-slice",
