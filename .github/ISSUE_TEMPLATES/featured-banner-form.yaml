@@ -15,6 +15,7 @@ body:
     attributes:
       label: Name (Optional)
       description: If you whish to show your name on the featured page.
+    validations:
       required: false
 
   - type: input
@@ -22,6 +23,7 @@ body:
     attributes:
       label: Share URL
       description: Please provide the URL of the shared banner you created, [a guide](https://support.spotify.com/us/article/share-from-spotify/) if needed.
+    validations:
       required: true
 
   - type: input
@@ -30,6 +32,7 @@ body:
       label: Spotify Playlist URL (Optional)
       description: If applicable, please provide the URL of the Spotify playlist associated with the banner.
       placeholder: "e.g., https://open.spotify.com/playlist/your_playlist_id"
+    validations:
       required: false
 
   - type: markdown
