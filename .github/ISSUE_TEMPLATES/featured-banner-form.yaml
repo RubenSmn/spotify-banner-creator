@@ -1,5 +1,6 @@
 name: Featured Banner Request
 title: "[Featured Banner]"
+about: Request to get banner featured.
 labels: featured-banner
 assignees:
   - RubenSmn
