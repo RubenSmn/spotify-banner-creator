@@ -74,6 +74,16 @@ export default function Featured() {
           <Card key={featured.bannerUrl} {...featured} />
         ))}
       </div>
+      <section className="flex flex-col items-center gap-4 text-center text-xl">
+        <p>Want your own banner to be featured?</p>
+        <a
+          href="https://github.com/RubenSmn/spotify-banner-creator/issues/new?assignees=RubenSmn&labels=featured-banner&projects=&template=featured_banner.yml&title=%5BFeatured+Banner%5D"
+          target="_blank"
+          className="rounded-md border border-transparent bg-amber-600 px-3 py-2 font-medium text-white transition-colors duration-150 ease-in hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:bg-amber-300 dark:text-black dark:hover:bg-amber-400 dark:focus:ring-amber-200"
+        >
+          Get Featured
+        </a>
+      </section>
     </main>
   );
 }
