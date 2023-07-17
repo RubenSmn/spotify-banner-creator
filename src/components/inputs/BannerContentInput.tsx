@@ -94,7 +94,7 @@ const BannerContentInput = () => {
                 </ComboboxTrigger>
               </ComboboxControl>
               <Portal>
-                <ComboboxPositioner>
+                <ComboboxPositioner className="z-[9999]">
                   <ComboboxContent className="max-h-64 overflow-y-scroll rounded-md bg-slate-200 p-2 text-black dark:bg-slate-700 dark:text-white">
                     {options.map((item, index) => (
                       <ComboboxOption
