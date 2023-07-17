@@ -106,6 +106,7 @@ const allSolidList = [
   "dot-circle",
   "dove",
   "dragon",
+  "drum",
   "dumbbell",
   "dumpster",
   "dungeon",
