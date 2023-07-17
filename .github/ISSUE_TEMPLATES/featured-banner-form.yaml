@@ -12,26 +12,28 @@ body:
         ## :heart: Thank you for using the Spotify Banner Creator tool!
 
   - type: input
-    id: name
-    attributes:
-      label: Name (Optional)
-      description: If you whish to show your name on the featured page.
-    validations:
-      required: false
-
-  - type: input
     id: share_url
     attributes:
       label: Share URL
-      description: Please provide the URL of the shared banner you created, [a guide](https://support.spotify.com/us/article/share-from-spotify/) if needed.
+      description: Please provide the URL of the shared banner you created.
+      placeholder: "https://spotify-banner-creator.vercel.app/eyJiYW5uZXJTdHlsZSI6eyJ0eXBvZ3JhcGh5Ijp7ImZvbnRGYW1pbHkiOiJSb2JvdG8iLCJmb250V2VpZ2h0IjoiNzAwIiwiZm9udFN0eWxlIjoibm9ybWFsIiwiZm9udFNpemUiOiI0cmVtIiwiY29sb3IiOiIjZmZmIiwibGV0dGVyU3BhY2luZyI6IjByZW0iLCJsaW5lSGVpZ2h0IjoiNHJlbSIsInRleHRUcmFuc2Zvcm0iOiJjYXBpdGFsaXplIn0sImljb24iOnsiZm9udFNpemUiOiIxMnJlbSIsImNvbG9yIjoicmdiYSgyNDIsIDEzOCwgMTM4LCAwLjQzKSJ9LCJiYW5uZXIiOnsiYmFja2dyb3VuZCI6ImxpbmVhci1ncmFkaWVudCg0NWRlZywgUkdCQSg3MiwgOSwgOSwgMSkgMCUsIHJnYmEoMjU1LDYsNiwxKSAxMDAlKSIsImp1c3RpZnlDb250ZW50IjoiY2VudGVyIiwiYWxpZ25JdGVtcyI6ImNlbnRlciJ9fSwiYmFubmVyTmFtZSI6IkZ1bmt5IEZpbmVzc2UiLCJiYW5uZXJJY29uIjoiY29tcGFjdC1kaXNjIiwiZGlzcGxheUljb24iOnRydWV9"
     validations:
       required: true
 
   - type: input
+    id: name
+    attributes:
+      label: Name
+      description: If you whish to show your name on the featured page.
+      placeholder: "RubenSmn"
+    validations:
+      required: false
+
+  - type: input
     id: playlist_url
     attributes:
-      label: Spotify Playlist URL (Optional)
-      description: If applicable, please provide the URL of the Spotify playlist associated with the banner.
+      label: Spotify Playlist URL
+      description: If you whish to share your Spotify playlist for which you used your banner, [a guide](https://support.spotify.com/us/article/share-from-spotify/) if needed.
       placeholder: "e.g., https://open.spotify.com/playlist/your_playlist_id"
     validations:
       required: false
@@ -39,4 +41,4 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for your feature request!
+        Thank you for your featured banner request!
