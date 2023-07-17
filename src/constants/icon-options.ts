@@ -234,6 +234,7 @@ const allSolidList = [
   "mercury",
   "meteor",
   "microchip",
+  "microphone",
   "microphone-alt",
   "microphone-alt-slash",
   "microscope",
