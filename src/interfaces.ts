@@ -71,3 +71,9 @@ export interface StylePropFont extends StyleProp {
 export interface StylePropIcon extends StyleProp {
   input: PROPTYPES.ICON;
 }
+
+export interface Featured {
+  bannerUrl: string;
+  creator?: string;
+  spotifyPlaylistUrl?: string;
+}
