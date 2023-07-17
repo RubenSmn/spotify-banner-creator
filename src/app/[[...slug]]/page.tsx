@@ -28,7 +28,7 @@ export async function generateMetadata({
 export default function Home({ params }: PageProps) {
   return (
     <BannerProvider slug={params.slug}>
-      <main className="mx-auto grid max-w-screen-lg flex-1 grid-cols-1 gap-8 px-4 pb-8 text-black dark:text-white md:grid-cols-2 md:gap-4">
+      <main className="mx-auto grid max-w-screen-lg flex-1 grid-cols-1 gap-8 overflow-x-hidden px-4 pb-8 text-black dark:text-white md:grid-cols-2 md:gap-4">
         <Preview />
         <Editor />
         <section className="col-span-1 flex flex-col items-center gap-4 self-end text-center md:col-span-2">
