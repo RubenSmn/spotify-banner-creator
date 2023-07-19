@@ -6,9 +6,9 @@ import { Tooltip } from "@/components/ui/Tooltip";
 
 interface Props {
   title: string;
-  info: string;
   isChanged: boolean;
   onReset: () => void;
+  info?: string;
 }
 
 const InputHeader: React.FC<Props> = (props) => {
