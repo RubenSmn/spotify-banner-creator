@@ -52,6 +52,14 @@ export class RevisionManager {
     return null;
   }
 
+  get hasUndoRevisions(): boolean {
+    return this.history.length > 0;
+  }
+
+  get hasRedoRevisions(): boolean {
+    return this.redoStack.length > 0;
+  }
+
   _log() {
     console.log(this.history, this.redoStack);
   }
