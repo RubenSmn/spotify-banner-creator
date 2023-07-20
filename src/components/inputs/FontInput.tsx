@@ -4,6 +4,7 @@ import { StylePropFont } from "@/interfaces";
 import { useGetPropByPath, useSetPropByPath } from "../Provider";
 import InputHeader from "./InputHeader";
 import { cn } from "@/utils/classnames";
+import { useRevisionManager } from "@/hooks/useRevisionManager";
 
 type FontInputProps = {
   prop: StylePropFont;
@@ -16,11 +17,28 @@ function FontInput({ prop, path }: FontInputProps) {
   const currentValue = getPropByPath(path);
   const isChanged = String(currentValue) !== String(prop.defaultValue);
 
+  const revisionManager = useRevisionManager({
+    onUndo: (action) => {
+      if (action === null) return;
+      const { path, previousValue } = action;
+      setPropByPath(path, previousValue as string);
+    },
+    onRedo: (action) => {
+      if (action === null) return;
+      const { path, value } = action;
+      setPropByPath(path, value as string);
+    },
+  });
+
   const handleChange = (newFont: string) => {
+    if (newFont === currentValue) return;
+
+    revisionManager.update(path, newFont, currentValue);
     setPropByPath(path, newFont);
   };
 
   const handleReset = () => {
+    revisionManager.update(path, prop.defaultValue, currentValue);
     setPropByPath(path, prop.defaultValue);
   };
 

@@ -2,8 +2,11 @@ export interface ConfigProps {
   [category: string]: {
     displayText: string;
     props: {
-      // [prop: string]: StylePropColor | StylePropSelect | StylePropSlider;
-      [prop: string]: any;
+      [prop: string]:
+        | StylePropFont
+        | StylePropColor
+        | StylePropSelect
+        | StylePropSlider;
     };
   };
 }
@@ -41,16 +44,17 @@ export enum PROPTYPES {
 export interface StyleProp {
   displayText: string;
   input: PROPTYPES;
-  defaultValue: string;
-  info: string;
+  info?: string;
 }
 
 export interface StylePropColor extends StyleProp {
   input: PROPTYPES.COLOR;
+  defaultValue: string;
 }
 
 export interface StylePropSelect extends StyleProp {
   input: PROPTYPES.SELECT;
+  defaultValue: string;
   options: { [key: string]: string };
 }
 
@@ -60,11 +64,13 @@ export interface StylePropSlider extends StyleProp {
   max: number;
   step: number;
   unit: string;
+  defaultValue: number;
   helpers: { [name: string]: number }[];
 }
 
 export interface StylePropFont extends StyleProp {
   input: PROPTYPES.FONT;
+  defaultValue: string;
   options: string[];
 }
 

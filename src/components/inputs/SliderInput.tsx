@@ -9,29 +9,51 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@ark-ui/react";
-import { StylePropSlider } from "@/interfaces";
+import type { StylePropSlider } from "@/interfaces";
 import { useGetPropByPath, useSetPropByPath } from "../Provider";
 import InputHeader from "./InputHeader";
+import { useRevisionManager } from "@/hooks/useRevisionManager";
+import { useDebounceValue } from "@/hooks/useDebounceValue";
 
-interface Props {
+type SliderInputProps = {
   prop: StylePropSlider;
   path: string;
-}
+};
 
-const SliderInput: React.FC<Props> = (props) => {
-  const { prop, path } = props;
+const SliderInput = ({ prop, path }: SliderInputProps) => {
   const getPropByPath = useGetPropByPath();
   const setPropByPath = useSetPropByPath();
-  const inputValue = getPropByPath(path).replace(prop.unit, "");
+  const inputValue = Number(getPropByPath(path).replace(prop.unit, ""));
   const isChanged = String(inputValue) !== String(prop.defaultValue);
 
+  const { setDebounceValue } = useDebounceValue(inputValue, 500);
+  const revisionManager = useRevisionManager({
+    onUndo: (action) => {
+      if (action === null) return;
+      const { path, previousValue } = action;
+      setPropByPath(path, previousValue + prop.unit);
+    },
+    onRedo: (action) => {
+      if (action === null) return;
+      const { path, value } = action;
+      setPropByPath(path, value + prop.unit);
+    },
+  });
+
   const handleChange = ({ value }: { value: number }) => {
+    if (value === inputValue) return;
+
     const newValue = value + prop.unit;
+    setDebounceValue(inputValue, (debounceValue) => {
+      revisionManager.update(path, value, debounceValue);
+    });
+
     setPropByPath(path, newValue);
   };
 
   const handleReset = () => {
     const value = prop.defaultValue + prop.unit;
+    revisionManager.update(path, prop.defaultValue, inputValue);
     setPropByPath(path, value);
   };
 
@@ -44,7 +66,7 @@ const SliderInput: React.FC<Props> = (props) => {
         onReset={handleReset}
       />
       <Slider
-        value={Number(inputValue)}
+        value={inputValue}
         min={prop.min}
         max={prop.max}
         step={prop.step}
@@ -57,8 +79,7 @@ const SliderInput: React.FC<Props> = (props) => {
               className="h-1 rounded-lg bg-green-600 active:scale-110 dark:bg-green-400"
               style={{
                 width: `${
-                  ((Number(inputValue) - prop.min) / (prop.max - prop.min)) *
-                  100
+                  ((inputValue - prop.min) / (prop.max - prop.min)) * 100
                 }%`,
               }}
             />
