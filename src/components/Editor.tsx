@@ -6,6 +6,7 @@ import BannerContentInput from "@/components/inputs/BannerContentInput";
 import { configProps } from "@/constants";
 import PropInput from "./inputs/PropInput";
 import { cn } from "@/utils/classnames";
+import RevisionButtons from "./RevisionButtons";
 
 const Editor = () => {
   const categories = Object.entries(configProps);
@@ -21,6 +22,7 @@ const Editor = () => {
   return (
     <div className="w-full min-w-[300px]">
       <BannerContentInput />
+      <RevisionButtons />
       <Tabs value={currentTab} onChange={handleTabChange}>
         <TabList className="mb-4 grid grid-cols-3">
           {categories.map(([categoryName, values], idx: number) => {

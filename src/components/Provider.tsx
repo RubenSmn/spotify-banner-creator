@@ -7,11 +7,14 @@ import type { BannerStyle } from "@/interfaces";
 import { Provider, atom, useAtom, useAtomValue } from "jotai";
 import { useHydrateAtoms } from "jotai/utils";
 import { defaultBannerName } from "@/constants/default-style";
+import { RevisionManager } from "@/RevisionManager";
 
 export const bannerStyleAtom = atom<BannerStyle>(defaultBannerStyle);
 export const bannerNameAtom = atom(defaultBannerName);
 export const bannerIconAtom = atom("code");
 export const displayIconAtom = atom(false);
+
+export const revisionAtom = atom(new RevisionManager());
 
 export const useGetPropByPath = () => {
   const bannerStyle = useAtomValue(bannerStyleAtom);
