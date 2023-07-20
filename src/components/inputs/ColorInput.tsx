@@ -44,9 +44,10 @@ const ColorInput = ({ prop, path }: ColorInputProps) => {
     setPropByPath(path, value);
   };
 
-  const handleReset = useCallback(() => {
+  const handleReset = () => {
+    revisionManager.update(path, prop.defaultValue, inputValue);
     setPropByPath(path, prop.defaultValue);
-  }, [setPropByPath, path, prop.defaultValue]);
+  };
 
   return (
     <>
