@@ -26,9 +26,9 @@ export function CustomRadioGroup({
             onClick={() => handleClick(label)}
             className={cn("px-3 py-2 text-sm font-semibold capitalize", {
               "bg-slate-200 text-black hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600":
-                label !== value,
+                option !== value,
               "bg-green-600 text-white hover:bg-green-700 dark:bg-green-400 dark:text-black dark:hover:bg-green-500":
-                label === value,
+                option === value,
               "rounded-l-md": idx === 0,
               "rounded-r-md": idx === optionsEntries.length - 1,
             })}
