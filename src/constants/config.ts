@@ -118,9 +118,9 @@ export const configProps: ConfigProps = {
         displayText: "Horizontal Text Position",
         input: PROPTYPES.SELECT,
         options: {
-          left: "start",
+          left: "flex-start",
           center: "center",
-          right: "end",
+          right: "flex-end",
         },
         defaultValue: "center",
       },
@@ -128,9 +128,9 @@ export const configProps: ConfigProps = {
         displayText: "Vertical Text Position",
         input: PROPTYPES.SELECT,
         options: {
-          top: "start",
+          top: "flex-start",
           center: "center",
-          bottom: "end",
+          bottom: "flex-end",
         },
         defaultValue: "center",
       },
