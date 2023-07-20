@@ -1,4 +1,4 @@
-import { BannerStyle } from "@/interfaces";
+import type { BannerStyle, StylePropSelect } from "@/interfaces";
 import { configProps } from "./config";
 
 export const defaultBannerStyle: BannerStyle = {
@@ -20,14 +20,10 @@ export const defaultBannerStyle: BannerStyle = {
     // background: 'linear-gradient(45deg, #882322 0%, #d24442 100%)',
     background:
       "linear-gradient(45deg, RGBA(3, 3, 68, 1) 0%, rgba(0,212,255,1) 100%)",
-    justifyContent:
-      configProps.banner.props.justifyContent.options[
-        configProps.banner.props.justifyContent.defaultValue
-      ],
-    alignItems:
-      configProps.banner.props.alignItems.options[
-        configProps.banner.props.alignItems.defaultValue
-      ],
+    justifyContent: (configProps.banner.props.justifyContent as StylePropSelect)
+      .options[configProps.banner.props.justifyContent.defaultValue],
+    alignItems: (configProps.banner.props.alignItems as StylePropSelect)
+      .options[configProps.banner.props.alignItems.defaultValue],
   },
 };
 
