@@ -4,8 +4,7 @@ import ColorInput from "./ColorInput";
 import SelectInput from "./SelectInput";
 import FontInput from "./FontInput";
 
-const PropInput = (props: any) => {
-  const { prop, path } = props;
+const PropInput = ({ prop, path }: any) => {
   let input: React.ReactNode = null;
 
   switch (prop.input) {

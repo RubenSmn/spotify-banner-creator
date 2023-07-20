@@ -5,14 +5,15 @@ import ColorPicker from "react-best-gradient-color-picker";
 import type { StylePropColor } from "@/interfaces";
 import { useGetPropByPath, useSetPropByPath } from "@/components/Provider";
 import InputHeader from "./InputHeader";
+import { useDebounceValue } from "@/hooks/useDebounceValue";
+import { useRevisionManager } from "@/hooks/useRevisionManager";
 
 type ColorInputProps = {
   prop: StylePropColor;
   path: string;
 };
 
-const ColorInput: React.FC<Props> = (props) => {
-  const { prop, path } = props;
+const ColorInput = ({ prop, path }: ColorInputProps) => {
   const getPropByPath = useGetPropByPath();
   const setPropByPath = useSetPropByPath();
   const inputValue = getPropByPath(path);
@@ -20,14 +21,32 @@ const ColorInput: React.FC<Props> = (props) => {
 
   const isTypography = /typography|icon/i.test(path);
 
-  const handleChange = (userInput: string) => {
-    const value = userInput;
+  const { setDebounceValue } = useDebounceValue(inputValue, 500);
+  const revisionManager = useRevisionManager({
+    onUndo: (action) => {
+      if (action === null) return;
+      const { path, previousValue } = action;
+      setPropByPath(path, previousValue as string);
+    },
+    onRedo: (action) => {
+      if (action === null) return;
+      const { path, value } = action;
+      setPropByPath(path, value as string);
+    },
+  });
+
+  const handleChange = (value: string) => {
+    if (value === inputValue) return;
+
+    setDebounceValue(inputValue, (debounceValue) => {
+      revisionManager.update(path, value, debounceValue);
+    });
     setPropByPath(path, value);
   };
 
   const handleReset = useCallback(() => {
     setPropByPath(path, prop.defaultValue);
-  }, [setPropByPath]);
+  }, [setPropByPath, path, prop.defaultValue]);
 
   return (
     <>
