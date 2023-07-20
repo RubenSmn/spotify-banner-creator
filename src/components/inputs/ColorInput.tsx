@@ -2,14 +2,14 @@
 
 import React, { useCallback } from "react";
 import ColorPicker from "react-best-gradient-color-picker";
-import { StyleProp } from "@/interfaces";
+import type { StylePropColor } from "@/interfaces";
 import { useGetPropByPath, useSetPropByPath } from "@/components/Provider";
 import InputHeader from "./InputHeader";
 
-interface Props {
-  prop: StyleProp;
+type ColorInputProps = {
+  prop: StylePropColor;
   path: string;
-}
+};
 
 const ColorInput: React.FC<Props> = (props) => {
   const { prop, path } = props;
