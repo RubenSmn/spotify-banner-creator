@@ -9,6 +9,7 @@ export const defaultBannerStyle: BannerStyle = {
     fontSize: "4rem",
     color: "#fff",
     letterSpacing: "0rem",
+    textAlign: "left",
     lineHeight: "4rem",
     textTransform: "capitalize",
   },

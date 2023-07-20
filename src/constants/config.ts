@@ -64,6 +64,16 @@ export const configProps: ConfigProps = {
         },
         defaultValue: "normal",
       },
+      textAlign: {
+        displayText: "Text Align",
+        input: PROPTYPES.SELECT,
+        options: {
+          left: "left",
+          center: "center",
+          right: "right",
+        },
+        defaultValue: "left",
+      },
       lineHeight: {
         displayText: "Vertical Word Spacing",
         input: PROPTYPES.SLIDER,

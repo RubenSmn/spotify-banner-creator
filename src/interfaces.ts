@@ -19,6 +19,7 @@ export interface BannerStyle {
     fontSize: string;
     color: string;
     letterSpacing: string;
+    textAlign: string;
     lineHeight: string;
     textTransform: string;
   };
