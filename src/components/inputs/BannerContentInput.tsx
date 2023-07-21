@@ -74,11 +74,9 @@ const BannerContentInput = () => {
           onInputChange={({ value }: { value: string }) =>
             setComboboxValue(value)
           }
-          onSelect={({ value }: { value: string }) => setBannerIcon(value)}
+          onSelect={({ value }) => setBannerIcon(value ?? bannerIcon)}
           inputBehavior={"autohighlight"}
-          onHighlight={({ value }: { value: string }) =>
-            setActiveComboboxValue(value)
-          }
+          onHighlight={({ value }) => setActiveComboboxValue(value ?? "")}
           className="w-full flex-1"
         >
           {({ isOpen }: { isOpen: boolean }) => (
