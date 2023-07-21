@@ -2,7 +2,8 @@
 
 A tool to create minimalistic Playlist Banners/Covers for Spotify. Take a look [https://spotify-banner-creator.vercel.app/](https://spotify-banner-creator.vercel.app/)!
 
-![Minimalistic Spotify Banners tool Logo](image-here)
+![Minimalistic Spotify Banners tool Logo](https://github.com/RubenSmn/spotify-banner-creator/assets/31519867/94e5cf9a-33f1-466d-ac0c-73d7fc16c421)
+
 
 The Minimalistic Spotify Banners tool is a powerful and user-friendly tool that allows you to create beautiful, minimalistic banners and covers for your Spotify playlists. With this tool, you can customize the look and feel of your playlists, making them stand out and reflect your unique style. Whether you're a music enthusiast, a content creator, or simply someone who loves organizing their music on Spotify, this tool will help you create eye-catching banners to enhance your playlist curation.
 
