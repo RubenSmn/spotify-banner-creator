@@ -10,7 +10,7 @@ function RevisionButtons() {
   const revisionManager = useRevisionManager();
 
   return (
-    <div className="sticky z-[9999] mb-4 flex gap-2">
+    <div className="mb-4 flex gap-2">
       <button
         onClick={revisionManager.undo}
         disabled={!revisionManager.hasRevisions.undo}
