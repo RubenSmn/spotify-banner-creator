@@ -125,7 +125,7 @@ export const configProps: ConfigProps = {
         defaultValue: "linear-gradient(45deg, #882322 0%, #d24442 100%)",
       },
       justifyContent: {
-        displayText: "Horizontal Text Position",
+        displayText: "Horizontal Content Position",
         input: PROPTYPES.SELECT,
         options: {
           left: "flex-start",
@@ -135,7 +135,7 @@ export const configProps: ConfigProps = {
         defaultValue: "center",
       },
       alignItems: {
-        displayText: "Vertical Text Position",
+        displayText: "Vertical Content Position",
         input: PROPTYPES.SELECT,
         options: {
           top: "flex-start",
