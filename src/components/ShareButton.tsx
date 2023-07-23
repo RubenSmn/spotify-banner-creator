@@ -55,7 +55,7 @@ function ShareButton() {
         )}
       </button>
       <Presence present={hasCopied}>
-        <div className="absolute z-40 mt-2 rounded-md bg-rose-600 px-2 py-1 text-white dark:bg-rose-400 dark:text-black">
+        <div className="absolute z-40 -mt-20 rounded-md bg-rose-600 px-2 py-1 text-white dark:bg-rose-400 dark:text-black md:mt-2">
           Copied!
         </div>
       </Presence>
