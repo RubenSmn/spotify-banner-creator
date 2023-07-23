@@ -10,6 +10,7 @@ import {
 import { useAtomValueManually } from "@/hooks/useAtomValueManually";
 import { useCallback } from "react";
 import { useClipboard } from "@/hooks/useClipboard";
+import { Presence } from "@ark-ui/react";
 
 function ShareButton() {
   const getBannerStyle = useAtomValueManually(bannerStyleAtom);
@@ -41,17 +42,24 @@ function ShareButton() {
   }, [copy, getBannerIcon, getBannerName, getBannerStyle, getDisplayIcon]);
 
   return (
-    <button
-      onClick={handleClick}
-      aria-label="copy the banner url"
-      className="inline-flex aspect-square h-10 w-10 items-center justify-center rounded-md bg-rose-600 text-white hover:bg-rose-700 dark:bg-rose-400 dark:text-black dark:hover:bg-rose-500"
-    >
-      {hasCopied ? (
-        <CheckIcon height={24} width={24} />
-      ) : (
-        <ShareIcon height={18} width={18} />
-      )}
-    </button>
+    <div>
+      <button
+        onClick={handleClick}
+        aria-label="copy the banner url"
+        className="inline-flex aspect-square h-10 w-10 items-center justify-center rounded-md bg-rose-600 text-white hover:bg-rose-700 dark:bg-rose-400 dark:text-black dark:hover:bg-rose-500"
+      >
+        {hasCopied ? (
+          <CheckIcon height={24} width={24} />
+        ) : (
+          <ShareIcon height={18} width={18} />
+        )}
+      </button>
+      <Presence present={hasCopied}>
+        <div className="absolute z-40 mt-2 rounded-md bg-rose-600 px-2 py-1 text-white dark:bg-rose-400 dark:text-black">
+          Copied!
+        </div>
+      </Presence>
+    </div>
   );
 }
 
