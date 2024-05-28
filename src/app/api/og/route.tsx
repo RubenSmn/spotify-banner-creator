@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import { defaultBannerName, defaultBannerStyle } from "@/constants";
 import { IconType } from "react-icons";
 import { convertToFaIconName } from "@/utils/icon";
